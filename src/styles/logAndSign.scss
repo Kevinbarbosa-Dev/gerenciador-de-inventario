@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900');
+
+$background-color: #E8EAED;
+$text-color: #262626;
+$inactive-color: #95a5a6;
+$linar-gradient: linear-gradient( #262626 ,#202020);
+
+
+.login-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: $background-color;
+  font-family: 'Inter';
+  
+}
+
+.form-container {
+  background: $background-color;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 
+  0 10px 10px rgba(0, 0, 0, 0.22);
+  width: 100%;
+  max-width: 400px;
+}
+
+.form-header {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.form-toggle {
+  font-size: 20px;
+  color: $inactive-color;
+  cursor: pointer;
+
+  &.active {
+    color: #202020;
+  }
+
+  &:hover {
+    color: darken(#202020, 10%);
+  }
+}
+
+.login-form,
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  input {
+    padding: 0.75rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    box-shadow: 0px 0px 2px black;
+  }
+}
+
+.submit-button {
+  background: $linar-gradient;
+  color: white;
+  border: none;
+  padding: 0.75rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  box-shadow: 0px 0px 5px black;
+
+}
+.submit-button:hover {
+  cursor: pointer;
+  color: #202020;
+  background:$background-color;
+  transition: 0.5s;
+}
+
+@media (max-width: 480px) {
+  .form-container {
+    padding: 1.5rem;
+  }
+
+  .form-header {
+    font-size: 1rem;
+  }
+}

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import '../styles/logAndSign.scss'
+import  '../assets/styles/logAndSign.scss'
 
 export default function Login() {
   return (

@@ -4,14 +4,19 @@ $background-color: #E8EAED;
 $text-color: #262626;
 $inactive-color: #95a5a6;
 $linar-gradient: linear-gradient( #262626 ,#202020);
-
+ body{
+  background-color: $background-color;
+  font-family: 'Inter';
+  font-weight: 400;
+  font-size: 16px;
+  overflow: hidden;
+ }
 
 .login-screen {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: $background-color;
   font-family: 'Inter';
   
 }
@@ -34,17 +39,16 @@ $linar-gradient: linear-gradient( #262626 ,#202020);
 }
 
 .form-toggle {
-  font-size: 20px;
+  font-size: 24px;
   color: $inactive-color;
   cursor: pointer;
-
-  &.active {
+  &:hover {
     color: #202020;
   }
-
-  &:hover {
-    color: darken(#202020, 10%);
-  }
+}
+.form-toggle-active {
+  color: #202020;
+  font-size: 24px;
 }
 
 .login-form,
@@ -71,12 +75,24 @@ $linar-gradient: linear-gradient( #262626 ,#202020);
   font-size: 1rem;
   box-shadow: 0px 0px 5px black;
 
-}
-.submit-button:hover {
+  &:hover {
   cursor: pointer;
   color: #202020;
   background:$background-color;
-  transition: 0.5s;
+  transition: color 0.3s ease;
+  }
+}
+
+.form-footer{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 1rem;
+}
+.form-question{
+  color: $inactive-color;
+  font-size: 18px;
+  color: #202020;
 }
 
 @media (max-width: 480px) {

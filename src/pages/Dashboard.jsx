@@ -1,12 +1,16 @@
-import React from 'react'
-import '../assets/styles/dashboard.scss'
+import React from 'react';
+import '../assets/styles/dashboard.scss';
+import Tabela from '../componente/Tabela';
+
 export default function Dashboard() {
     return (
-        <main className='container'>
-            <div className="item">
+        <main className='dashboard-container'>
+            <div className="dashboard-header">
                 <h1>Dashboard</h1>
             </div>
+            <div className="dashboard-tabela">
+                <Tabela />
+            </div>
         </main>
-
-    )
+    );
 }

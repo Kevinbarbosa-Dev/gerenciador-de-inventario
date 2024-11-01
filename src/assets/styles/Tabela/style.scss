@@ -1,0 +1,20 @@
+.table {
+    width: 100%;
+    border-collapse: collapse; // remove espaços entre as bordas das células
+
+
+    th, td {
+        padding: 0.75rem;
+        text-align: left;
+        border-bottom: 1px solid #ddd; // linha horizontal entre as células
+    }
+
+    th {
+        background-color: #f4f4f4; // cor de fundo para cabeçalho
+        font-weight: bold;
+    }
+
+    tr:hover {
+        background-color: #f9f9f9; // efeito hover nas linhas
+    }
+}

@@ -1,6 +1,11 @@
 import React from 'react';
-export default function BtnClose({onClick}){
+import '../assets/styles/Sidebar/sidebar.scss';
+import { DoubleArrowLeftIcon } from "@radix-ui/react-icons";
+export default function BtnClose({onClick, mouseSobreSidebar}){
     return(
-        <button onClick={onClick} className="btn-close" style={{ cursor: 'pointer' }}>X</button>
+        <DoubleArrowLeftIcon 
+        onClick={onClick} 
+        className={`btn-close ${mouseSobreSidebar ? 'sobre' : ''}`}
+        style={{ cursor: 'pointer', height:'20px', width:'20px' }}/>
     )
 }

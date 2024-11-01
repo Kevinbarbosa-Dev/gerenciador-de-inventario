@@ -1,5 +1,5 @@
 import React from 'react'
-import '../assets/styles/Relatorio.scss'
+import '../assets/styles/relatorio.scss'
 export default function Relatorio() {
     return (
         <main className='container'>

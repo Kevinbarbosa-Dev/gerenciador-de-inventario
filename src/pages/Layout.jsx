@@ -1,4 +1,3 @@
-// Layout.js
 import React, { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import {
@@ -18,20 +17,30 @@ import { DashboardIcon, GearIcon, ReaderIcon, HomeIcon, ExitIcon } from "@radix-
 import UserDropDown from '../componente/UserDropDown';
 import Relatorio from './Relatorio';
 import BtnClose from '../componente/BtnClose';
+import BtnOpen from '../componente/BtnOpen';
 
 export default function Layout() {
     const [isOpen, setIsOpen] = useState(true);
+    const [mouseSobreSidebar, setmouseSobreSidebar] = useState(false);
 
     const toggleSidebar = () => {
         setIsOpen(!isOpen);
     };
 
     return (
-        <div className="app-container">
-            <SideBar isOpen={isOpen}>
+        <div className={`app-container ${isOpen ? '' : 'sidebar-closed'}`}>
+            {!isOpen && (
+                <BtnOpen onClick={toggleSidebar} />
+            )}
+            
+            <SideBar 
+                isOpen={isOpen}
+                mouseDentro={() => setmouseSobreSidebar(true)}
+                mouseFora={() => setmouseSobreSidebar(false)}
+            >
                 <SideBarHeader>
                     <UserDropDown />
-                    <BtnClose onClick={toggleSidebar} />
+                    <BtnClose onClick={toggleSidebar} mouseSobreSidebar={mouseSobreSidebar} />
                 </SideBarHeader>
                 <SideBarMain>
                     <SideBarNav>
@@ -39,7 +48,7 @@ export default function Layout() {
                             <SideBarNavLink to="/dashboard">
                                 <DashboardIcon /> Dashboard
                             </SideBarNavLink>
-                            <SideBarNavLink to="/Relatorio">
+                            <SideBarNavLink to="/relatorio">
                                 <ReaderIcon /> Relatório
                             </SideBarNavLink>
                             <SideBarNavLink to="/settings">

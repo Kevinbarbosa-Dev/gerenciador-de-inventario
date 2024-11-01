@@ -1,11 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../assets/styles/sidebar.scss';
+import '../assets/styles/Sidebar/sidebar.scss';
 
 
-
-export function SideBar({ children, isOpen }) {
-    return <aside className={`sidebar ${isOpen ? 'open' : 'closed'}`}>{children}</aside>;
+export function SideBar({ children, isOpen, mouseDentro, mouseFora }) {
+    return (
+        <aside 
+            className={`sidebar ${isOpen ? 'open' : 'closed'}`}
+            onMouseEnter={mouseDentro} 
+            onMouseLeave={mouseFora}
+        >
+            {children}
+        </aside>
+    );
 }
 
 export function SideBarHeader({ children }) {

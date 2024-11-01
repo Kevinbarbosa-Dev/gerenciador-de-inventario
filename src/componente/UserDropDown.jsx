@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { GearIcon, LightningBoltIcon, PersonIcon } from "@radix-ui/react-icons";
-import '../assets/styles/UserDropDown.scss';
+import '../assets/styles/Sidebar/UserDropDown.scss';
 
 export default function UserDropDown() {
     const [isOpen, setIsOpen] = useState(false);

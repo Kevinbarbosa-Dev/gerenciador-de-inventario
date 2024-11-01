@@ -1,11 +1,33 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
-
+@import '../sass/color.scss';
 body {
     font-family: 'Inter';
     // font-weight: 400;
     // font-size: 16px;
     overflow: hidden;
 }
+.btn-close {
+    border: none;
+    color: transparent;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    
+    &.sobre {
+        color:black;
+    }
+}
+
+.hamburger-icon {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    z-index: 10;
+    border-radius: 50%;
+    padding: 0.5rem;
+    transition: all 0.3s ease;
+}
+
 
 .sidebar {
     -webkit-box-shadow: 4px 1px 8px -1px rgba(0,0,0,0.75);
@@ -18,6 +40,7 @@ body {
 
     &.closed {
         transform: translateX(-100%);
+        display: none;
     }
 
     &.open {
@@ -26,9 +49,9 @@ body {
     .sidebar-header {
         padding-left: 1.5rem;
         padding-right: 1.5rem;
-        background-color: orange;
         display: flex;
         justify-content: space-between;
+
     }
 
     .sidebar-main {
@@ -56,8 +79,13 @@ body {
         color: black;
         font-size: 0.875rem;
         padding: 0.5rem 0.75rem;
-        background-color: orange;
         gap: 0.75rem;
+        border-radius: 0.5rem;
+        transition: all 0.3s ease;
+        &:hover {
+            background-color: $background-color;
+        }
+
     }
 
     .sidebar-footer {

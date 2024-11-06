@@ -1,0 +1,1 @@
+export const dropdownItemClasses = "flex items-center px-4 py-2 text-gray-800 no-underline hover:bg-gray-100 gap-1";

@@ -1,20 +1,31 @@
-.table {
+// styles/CustomTable.scss
+.table-container {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+  
+  table {
     width: 100%;
-    border-collapse: collapse; // remove espaços entre as bordas das células
-
-
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+  
     th, td {
-        padding: 0.75rem;
-        text-align: left;
-        border-bottom: 1px solid #ddd; // linha horizontal entre as células
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      text-align: left;
     }
-
+  
     th {
-        background-color: #f4f4f4; // cor de fundo para cabeçalho
-        font-weight: bold;
+      background-color: #f4f4f4;
+      font-weight: bold;
     }
-
+  
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+  
     tr:hover {
-        background-color: #f9f9f9; // efeito hover nas linhas
+      background-color: #f1f1f1;
     }
-}
+  }
+  

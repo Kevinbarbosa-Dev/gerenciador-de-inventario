@@ -9,37 +9,41 @@ import {
     SideBarNavLink,
     SideBarFooter,
     SideBarFooterLink
-} from '../componente/SideBar';
-import Dashboard from './Dashboard';
-import Settings from './Settings';
-import '../assets/styles/App.scss';
-import { DashboardIcon, GearIcon, ReaderIcon, HomeIcon, ExitIcon } from "@radix-ui/react-icons";
-import UserDropDown from '../componente/UserDropDown';
-import Relatorio from './Relatorio';
-import BtnClose from '../componente/BtnClose';
-import BtnOpen from '../componente/BtnOpen';
+} from './components/SideBar';
+import Dashboard from './pages/Dashboard';
+import Settings from './pages/Settings';
+import Relatorio from './pages/Relatorio';
+import '../src/assets/styles/App.css';
+import { DashboardIcon, GearIcon, ReaderIcon, HomeIcon} from "@radix-ui/react-icons";
+import UserDropDown, { SetaBaixa } from './components/UserDropDown';
+import BtnOpen from './components/BtnOpen';
+import BtnClose from './components/BtnClose';
+
 
 export default function Layout() {
-    const [isOpen, setIsOpen] = useState(true);
+    const [sidebarIsOpen, setIsOpen] = useState(true);
     const [mouseSobreSidebar, setmouseSobreSidebar] = useState(false);
 
     const toggleSidebar = () => {
-        setIsOpen(!isOpen);
+        setIsOpen(!sidebarIsOpen);
     };
 
     return (
-        <div className={`app-container ${isOpen ? '' : 'sidebar-closed'}`}>
-            {!isOpen && (
+        <div className={`app-container ${sidebarIsOpen ? '' : 'app-container-sidebar-closed'}`}>
+            {!sidebarIsOpen && (
                 <BtnOpen onClick={toggleSidebar} />
             )}
-            
-            <SideBar 
-                isOpen={isOpen}
+
+            <SideBar
+                sidebarIsOpen={sidebarIsOpen}
                 mouseDentro={() => setmouseSobreSidebar(true)}
                 mouseFora={() => setmouseSobreSidebar(false)}
             >
                 <SideBarHeader>
-                    <UserDropDown />
+                    <div className='flex justify-center items-center gap-1'>
+                        <UserDropDown />
+                        <SetaBaixa mouseSobreSidebar={mouseSobreSidebar} />
+                    </div>
                     <BtnClose onClick={toggleSidebar} mouseSobreSidebar={mouseSobreSidebar} />
                 </SideBarHeader>
                 <SideBarMain>
@@ -56,22 +60,15 @@ export default function Layout() {
                             </SideBarNavLink>
                         </SideBarNavMain>
                     </SideBarNav>
-                    <SideBarNav>
-                        <SideBarNavMain>
-                            <SideBarNavLink to={"/"}>
-                                <HomeIcon /> Site
-                            </SideBarNavLink>
-                        </SideBarNavMain>
-                    </SideBarNav>
                 </SideBarMain>
                 <SideBarFooter>
-                    <SideBarFooterLink to="/">
-                        <ExitIcon /> Sair
+                    <SideBarFooterLink to={"/"}>
+                        <HomeIcon /> Site
                     </SideBarFooterLink>
                 </SideBarFooter>
             </SideBar>
 
-            <main className="main-content">
+            <main className={`main-content ${sidebarIsOpen ? '' : 'active'}`}>
                 <Routes>
                     <Route path="/" element={<Dashboard />} />
                     <Route path="/dashboard" element={<Dashboard />} />

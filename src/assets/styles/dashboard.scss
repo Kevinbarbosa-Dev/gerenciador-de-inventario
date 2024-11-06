@@ -1,37 +1,3 @@
-@import './sass/flex.scss';
 
-.dashboard-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    max-width: 1200px;
-    height: 100%; 
-    padding: 1rem; 
-    padding: 1rem;
-    box-shadow: 0 0 2px black;
-}
 
-.dashboard-header {
-    box-shadow: 0 0 2px black;
-    width: 100%;
-    height: 250px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: 0.5s;
-    margin-bottom: auto;
-}
 
-.dashboard-tabela {
-    width: 100%;
-    margin-top: 1rem;
-    box-shadow: 0 0 2px black;
-    padding: 1rem;
-    background-color: #fff;
-    border-radius: 0.5rem;
-    display: flex;
-    justify-content: space-between;
-    transition: 0.5s;
-}

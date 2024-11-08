@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useLayoutEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import {
     SideBar,
@@ -14,15 +14,31 @@ import Dashboard from './pages/Dashboard';
 import Settings from './pages/Settings';
 import Relatorio from './pages/Relatorio';
 import '../src/assets/styles/App.css';
-import { DashboardIcon, GearIcon, ReaderIcon, HomeIcon} from "@radix-ui/react-icons";
-import UserDropDown, { SetaBaixa } from './components/UserDropDown';
+import { DashboardIcon, GearIcon, ReaderIcon, HomeIcon } from "@radix-ui/react-icons";
+import UserDropDown from './components/UserDropDown';
 import BtnOpen from './components/BtnOpen';
 import BtnClose from './components/BtnClose';
-
 
 export default function Layout() {
     const [sidebarIsOpen, setIsOpen] = useState(true);
     const [mouseSobreSidebar, setmouseSobreSidebar] = useState(false);
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+    const handleResize = () => {
+        setWindowWidth(window.innerWidth);
+    };
+
+    useLayoutEffect(() => {
+        if (windowWidth <= 768) {
+            setIsOpen(false);
+        } else {
+            setIsOpen(true);
+        }
+        window.addEventListener('resize', handleResize);
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, [windowWidth]); 
 
     const toggleSidebar = () => {
         setIsOpen(!sidebarIsOpen);
@@ -41,8 +57,7 @@ export default function Layout() {
             >
                 <SideBarHeader>
                     <div className='flex justify-center items-center gap-1'>
-                        <UserDropDown />
-                        <SetaBaixa mouseSobreSidebar={mouseSobreSidebar} />
+                        <UserDropDown mouseSobreSidebar={mouseSobreSidebar} />
                     </div>
                     <BtnClose onClick={toggleSidebar} mouseSobreSidebar={mouseSobreSidebar} />
                 </SideBarHeader>
@@ -63,7 +78,7 @@ export default function Layout() {
                 </SideBarMain>
                 <SideBarFooter>
                     <SideBarFooterLink to={"/"}>
-                        <HomeIcon /> Site
+                        <img src="./src/assets/img/favicon-32x32.png" /> Stock
                     </SideBarFooterLink>
                 </SideBarFooter>
             </SideBar>

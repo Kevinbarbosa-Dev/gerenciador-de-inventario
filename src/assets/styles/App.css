@@ -14,7 +14,6 @@ body {
     grid-template-columns: 16rem 1fr;
     height: 100vh;
     transition: margin-left 0.3s ease;
-
     &.app-container-sidebar-closed {
         display: flex;
         justify-content: center;

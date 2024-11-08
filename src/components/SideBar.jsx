@@ -17,7 +17,7 @@ export function SideBar({ children, sidebarIsOpen, mouseDentro, mouseFora }) {
 
 export function SideBarHeader({ children }) {
     return (
-        <header className="px-6 flex justify-between transition-all duration-300  hover:bg-gray-100">
+        <header className="px-6 py-5 flex justify-between transition-all duration-300 hover:bg-gray-100 ">
             {children}
         </header>
     );
@@ -33,7 +33,7 @@ export function SideBarMain({ children }) {
 
 export function SideBarNav({ children }) {
     return (
-        <nav>
+        <nav className='w-full'>
             {children}
         </nav>
     );
@@ -64,7 +64,7 @@ export function SideBarNavLink({ children, to }) {
 
 export function SideBarFooter({ children }) {
     return (
-        <footer className="px-6 py-5 shadow-[0px_-1px_5px_-1px_rgba(0,0,0,0.75)]">
+        <footer className="px-6 py-5">
             {children}
         </footer>
     );

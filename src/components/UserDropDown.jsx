@@ -1,24 +1,17 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { ExitIcon, GearIcon, LightningBoltIcon, PersonIcon, ChevronDownIcon } from "@radix-ui/react-icons";
+import { ExitIcon, GearIcon, LightningBoltIcon, PersonIcon } from "@radix-ui/react-icons";
 import { dropdownItemClasses } from '@/assets/styles/tailwind/dropdownItemClasses';
 import '../assets/styles/Sidebar/sidebar.scss'
+import BtnSetaBaixa from './BtnSetaBaixa';
 
-export function SetaBaixa({mouseSobreSidebar}){
-    return(
-        <ChevronDownIcon className={`downIcon${mouseSobreSidebar ? 'sobre' : ''}`}
-        style={{cursor:'pointer',height:'20px', width:'20px' }}
-        />
-    )
-}
-export default function UserDropDown() {
+export default function UserDropDown({ mouseSobreSidebar }) {
     const [isOpen, setIsOpen] = useState(false);
     const dropdownRef = useRef(null);
 
     const toggleDropdown = () => {
-        setIsOpen(!isOpen);
+        setIsOpen(prev => !prev);
     };
-
 
     useEffect(() => {
         function handleClickOutside(event) {
@@ -32,10 +25,10 @@ export default function UserDropDown() {
 
     return (
         <div className="relative" ref={dropdownRef}>
-            <div className="flex items-center cursor-pointer" onClick={toggleDropdown}>
+            <div className="flex items-center cursor-pointer " onClick={toggleDropdown}>
                 <PersonIcon />
-                <span className="ml-2">Perfil</span>
-                
+                <span className="ml-2">Perfil</span> 
+                <BtnSetaBaixa mouseSobreSidebar={mouseSobreSidebar}/>       
             </div>
             <div className={`absolute top-full left-0 bg-white shadow-lg rounded-md overflow-hidden transition-all duration-300 ease-in-out transform ${isOpen ? 'opacity-100 max-h-64 visible translate-y-0' : 'opacity-0 max-h-0 invisible -translate-y-2'}`}>
                 <Link to="/profile/settings" className={`${dropdownItemClasses}`}>

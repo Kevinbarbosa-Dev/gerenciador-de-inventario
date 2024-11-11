@@ -5,13 +5,18 @@ import { Button } from "@/components/ui/button"
 import { Search, SortAsc, SortDesc, ListFilter } from 'lucide-react'
 import ModalAdd from '@/components/ModalAdd'
 import RelatorioTabela from '../components/RelatorioTabela'
+import { DonutChart } from '@/components/DonutChart'
 
 const initialData = [
     { id: 1, nome: "Produto 1", categoria: "Categoria 1", descricao: "Descrição do Produto 1", quantidade: 10, valor: 100.00, fornecedor: "Fornecedor 1" },
     { id: 2, nome: "Produto 2", categoria: "Categoria 2", descricao: "Descrição do Produto 2", quantidade: 5, 
     valor: 50.00, fornecedor: "Fornecedor 2" },
     {id: 3, nome: "Produto 3", categoria: "Categoria 3", descricao: "Descrição do Produto 3", quantidade: 15,
-    valor: 150.00, fornecedor: "Fornecedor 3"}
+    valor: 150.00, fornecedor: "Fornecedor 3"},
+    {id: 4,  nome: "Produto 4", categoria: "Categoria 4", descricao: "Descrição do Produto 4", quantidade: 10,
+        valor: 100.00, fornecedor: "Fornecedor 4"},
+    {id: 5,  nome: "Produto 4", categoria: "Categoria 5", descricao: "Descrição do Produto 4", quantidade: 10,
+        valor: 100.00, fornecedor: "Fornecedor 5"}
 ]
 
 export default function Dashboard() {
@@ -46,23 +51,30 @@ export default function Dashboard() {
     }
 
     const totalItems = inventorio.reduce((sum, item) => sum + item.quantidade, 0)
-    const totalValue = inventorio.reduce((sum, item) => sum + item.valor, 0)
+    const totalValue = inventorio.reduce((sum, item) => sum + item.valor, 0);
+    const categories = [...new Set(inventorio.map(item => item.categoria))];
+    const suppliers = [...new Set(inventorio.map(item => item.fornecedor))];
 
     return (
         <main className="grid grid-rows-[42%_8%_50%] w-full max-w-[1200px] h-screen">
             <div className="shadow-[0_0_2px_rgba(0,0,0,0.1)] w-full flex items-center justify-center transition-all duration-500 border-b-[1px] border-b-gray-300">
-                <div className='flex w-full h-full'>
+                <div className='flex w-full h-full ml-2'>
                     <div className="flex items-center justify-center w-full h-full">
                     <RelatorioTabela inventorio={inventorio} totalItems={totalItems} totalValue={totalValue} />
                     </div>
-                    <div className="flex items-center justify-center  w-full h-full">
-                        <h1>Dashboard 2</h1>
+                    <div className="w-full h-full">
+                        <DonutChart data={inventorio}/>
                     </div>
                 </div>
             </div>
             <div className="flex gap-2 justify-between p-2">
                 <Button onClick={() => setOpen(true)}>Adicionar Produto</Button>
-                <ModalAdd open={open} onOpenChange={setOpen} onAddItem={handleAddItem} />
+                <ModalAdd 
+                open={open} 
+                onOpenChange={setOpen} 
+                onAddItem={handleAddItem} 
+                categories={categories}
+                suppliers={suppliers}/>
                 <div className="flex gap-2">
                     <Button variant="outline" size="icon" title="Filtrar">
                         <ListFilter className="h-4 w-4" />

@@ -9,7 +9,7 @@ import InputAdd from "./inputAdd"
 
 
 
-export default function ModalAdd({open, onOpenChange, onAddItem}) {
+export default function ModalAdd({open, onOpenChange, onAddItem, categories,suppliers}) {
 
   const handleSubmit = (newItem) => {
     onAddItem(newItem)
@@ -21,7 +21,11 @@ export default function ModalAdd({open, onOpenChange, onAddItem}) {
         <DialogHeader>
           <DialogTitle>Adicione um novo produto</DialogTitle>
         </DialogHeader>
-        <InputAdd onSubmit={handleSubmit} onCancel={() => onOpenChange(false)}/>
+        <InputAdd 
+        onSubmit={handleSubmit} 
+        onCancel={() => onOpenChange(false)} 
+        categories={categories} 
+        suppliers={suppliers}/>
       </DialogContent>
     </Dialog>
   )

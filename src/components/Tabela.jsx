@@ -22,7 +22,7 @@ export default function Tabela({ filteredInventory, onRemove }) {
   }
 
   return (
-    <Table className="ml-2 font-sans">
+    <Table className="overlay-x-auto ml-2 font-sans">
       <TableHeader>
         <TableRow>
           <TableHead className="w-[100px]">ID</TableHead>

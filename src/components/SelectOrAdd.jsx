@@ -36,6 +36,7 @@ export default function DynamicSelect({ label, options, value, onChange}) {
                         onChange={(e) => setInputValue(e.target.value)}
                         placeholder="Nova opção"
                         className="p-2 border rounded flex-1"
+                        required
                     />
                 </div>
             )}

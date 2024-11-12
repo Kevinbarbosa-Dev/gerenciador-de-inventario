@@ -5,7 +5,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog"
-import InputAdd from "./inputAdd"
+import InputAdd from "./InputAdd"
 
 
 

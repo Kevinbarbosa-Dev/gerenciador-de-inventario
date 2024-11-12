@@ -3,7 +3,18 @@ import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
 
-const COLORS = ['hsl(var(--chart-1))', 'hsl(var(--chart-2))', 'hsl(var(--chart-3))', 'hsl(var(--chart-4))']
+const COLORS = [
+    'hsl(var(--chart-1))', 
+    'hsl(var(--chart-2))', 
+    'hsl(var(--chart-3))', 
+    'hsl(var(--chart-4))',
+    'hsl(var(--chart-5))',
+    'hsl(var(--chart-6))',
+    'hsl(var(--chart-7))',
+    'hsl(var(--chart-8))',
+    'hsl(var(--chart-9))',
+    'hsl(var(--chart-10))'
+]
 
 export function DonutChart({ data }) {
     const chartData = Object.entries(

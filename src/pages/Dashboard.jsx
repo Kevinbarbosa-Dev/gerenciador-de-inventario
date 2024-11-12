@@ -14,9 +14,9 @@ const initialData = [
     {id: 3, nome: "Produto 3", categoria: "Categoria 3", descricao: "Descrição do Produto 3", quantidade: 15,
     valor: 150.00, fornecedor: "Fornecedor 3"},
     {id: 4,  nome: "Produto 4", categoria: "Categoria 4", descricao: "Descrição do Produto 4", quantidade: 10,
-        valor: 100.00, fornecedor: "Fornecedor 4"},
+    valor: 100.00, fornecedor: "Fornecedor 4"},
     {id: 5,  nome: "Produto 4", categoria: "Categoria 5", descricao: "Descrição do Produto 4", quantidade: 10,
-        valor: 100.00, fornecedor: "Fornecedor 5"}
+    valor: 100.00, fornecedor: "Fornecedor 5"},
 ]
 
 export default function Dashboard() {

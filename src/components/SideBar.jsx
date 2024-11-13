@@ -6,7 +6,10 @@ import '../assets/styles/Sidebar/sidebar.scss';
 export function SideBar({ children, sidebarIsOpen, mouseDentro, mouseFora }) {
     return (
         <aside
-            className={`sidebar ${sidebarIsOpen ? 'open' : 'closed'}`}
+            className={`
+                ${sidebarIsOpen ? 'translate-x-0 opacity-100' : '-translate-x-full opacity-0 hidden'}
+                flex flex-col transition-all duration-300 ease-in-out border
+            `}
             onMouseEnter={mouseDentro}
             onMouseLeave={mouseFora}
         >

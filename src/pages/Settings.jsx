@@ -1,7 +1,4 @@
-import '../assets/styles/settings.scss'
 import { Bell, Globe, Moon, Palette, Shield } from "lucide-react"
-import { BrowserRouter as Router, Link } from 'react-router-dom';
-import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Label } from "@/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
@@ -10,10 +7,9 @@ import { Switch } from "@/components/ui/switch"
 // bg-gray-100 dark:bg-gray-900"
 export default function Settings() {
     return (
-        <div className="flex h-screen w-full bg-gray-100 dark:bg-gray-900">
+      <div className="flex h-screen w-full bg-gray-100 dark:bg-gray-900">
       <div className="flex-1 overflow-y-auto">
-        <div className="max-w-3xl mx-auto p-6 space-y-8">
-          <h1 className="text-3xl font-bold">Configurações do App</h1>
+        <div className="max-w-3xl p-6 space-y-8 w-full">
 
           <Card>
             <CardContent className="p-6 space-y-6">
@@ -101,20 +97,6 @@ export default function Settings() {
                     <span>Alertas de estoque baixo</span>
                   </Label>
                   <Switch id="stock-alerts" />
-                </div>
-                <div className="flex items-center justify-between">
-                  <Label htmlFor="price-changes" className="flex items-center space-x-2">
-                    <Globe className="h-5 w-5" />
-                    <span>Alterações de preço</span>
-                  </Label>
-                  <Switch id="price-changes" />
-                </div>
-                <div className="flex items-center justify-between">
-                  <Label htmlFor="new-products" className="flex items-center space-x-2">
-                    <Shield className="h-5 w-5" />
-                    <span>Novos produtos</span>
-                  </Label>
-                  <Switch id="new-products" />
                 </div>
               </div>
             </CardContent>

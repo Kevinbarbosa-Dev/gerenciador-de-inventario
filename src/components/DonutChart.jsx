@@ -25,7 +25,7 @@ export function DonutChart({ data }) {
     ).map(([name, value]) => ({ name, value }));
 
     return (
-        <Card className="w-full h-full max-w-3xl mx-auto p-4 text-sm md:text-base">
+        <Card className="w-full h-full max-w-3xl mx-auto p-4 text-sm md:text-base dark:bg-[#202020] dark:border-[#303030] rounded-md">
             <CardHeader>
                 <CardTitle >Distribuição de Produtos</CardTitle>
                 <CardDescription >Quantidade por categoria</CardDescription>

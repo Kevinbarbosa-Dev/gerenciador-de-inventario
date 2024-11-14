@@ -8,8 +8,8 @@ import {
 
 export default function RelatorioTabela({ inventorio, totalItems, totalValue }) {
   return (
-    <div className="flex flex-col w-full gap-1">
-      <Card className="w-full">
+    <div className="flex flex-col w-full gap-1 mr-2">
+      <Card className="w-full dark:bg-[#202020] dark:border-[#303030]">
         <CardHeader className="flex flex-row items-center justify-between">
           <CardTitle className="text-sm font-medium">Total de Produtos</CardTitle>
         </CardHeader>
@@ -18,7 +18,7 @@ export default function RelatorioTabela({ inventorio, totalItems, totalValue }) 
         </CardContent>
       </Card>
       
-      <Card className="w-full">
+      <Card className="w-full dark:bg-[#202020] dark:border-[#303030]">
         <CardHeader className="flex flex-row items-center justify-between">
           <CardTitle className="text-sm font-medium">Total em Estoque</CardTitle>
         </CardHeader>
@@ -27,7 +27,7 @@ export default function RelatorioTabela({ inventorio, totalItems, totalValue }) 
         </CardContent>
       </Card>
 
-      <Card className="w-full">
+      <Card className="w-full dark:bg-[#202020] dark:border-[#303030]">
         <CardHeader className="flex flex-row items-center justify-between">
           <CardTitle className="text-sm font-medium">Valor Total</CardTitle>
         </CardHeader>

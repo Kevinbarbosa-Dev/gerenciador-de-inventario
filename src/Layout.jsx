@@ -18,6 +18,7 @@ import { DashboardIcon, GearIcon, ReaderIcon, HomeIcon } from "@radix-ui/react-i
 import UserDropDown from './components/UserDropDown';
 import BtnOpen from './components/BtnOpen';
 import BtnClose from './components/BtnClose';
+import LandingPage from './pages/LandingPage';
 
 export default function Layout() {
     const [sidebarIsOpen, setIsOpen] = useState(true);
@@ -77,7 +78,7 @@ export default function Layout() {
                     </SideBarNav>
                 </SideBarMain>
                 <SideBarFooter>
-                    <SideBarFooterLink to={"/"}>
+                    <SideBarFooterLink to={"/LandingPage"}>
                         <img src="./src/assets/img/favicon-32x32.png" /> Stock
                     </SideBarFooterLink>
                 </SideBarFooter>

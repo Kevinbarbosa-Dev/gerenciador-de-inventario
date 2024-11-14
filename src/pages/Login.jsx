@@ -1,26 +1,39 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import  '../assets/styles/logAndSign.scss'
+import { 
+  loginScreen, 
+  formContainer, 
+  formHeader, 
+  formToggle, 
+  formToggleActive, 
+  loginForm, 
+  inputStyle, 
+  submitButton, 
+  formFooter, 
+  formQuestion 
+} from '../assets/styles/tailwind/logAndSign'; 
 
 export default function Login() {
   return (
-    <div className="login-screen">
-      <div className="form-container">
-        <div className="form-header">
-          <span className="form-toggle-active">Entrar</span>
+    <body className='bg-[#E8EAED]'>
+    <div className={loginScreen}>
+      <div className={`${formContainer}`}>
+        <div className={`${formHeader}`}>
+          <h2 className={formToggleActive}>Entrar</h2>
         </div>
-        <form className="login-form">
-          <input type="email" placeholder="Email" required />
-          <input type="password" placeholder="Senha" required />
-          <button type="submit" className="submit-button">Entrar</button>
+        <form className={loginForm}>
+          <input type="email" placeholder="Email" required className={inputStyle} />
+          <input type="password" placeholder="Senha" required className={inputStyle} />
+          <button type="submit" className={submitButton}>Entrar</button>
         </form>
-        <div className='form-footer'>
-          <span className='form-question'>Não tem cadastro?</span>
+        <div className={formFooter}>
+          <span className={formQuestion}>Não tem cadastro?</span>
           <Link to="/Cadastrar" style={{ textDecoration: 'none' }}>
-            <span className="form-toggle">Cadastrar</span>
+            <span className={formToggle}>Cadastrar</span>
           </Link>
         </div>
       </div>
     </div>
+    </body>
   )
 }

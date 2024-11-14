@@ -4,25 +4,27 @@ import { Label } from "@/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Switch } from "@/components/ui/switch"
+import { useTheme } from "@/components/ThemeProvider"
 // bg-gray-100 dark:bg-gray-900"
 export default function Settings() {
+  const { setTheme } = useTheme()
     return (
-      <div className="flex h-screen w-full bg-gray-100 dark:bg-gray-900">
+      <div className="flex h-screen w-full bg-gray-100 dark:bg-[#202020]">
       <div className="flex-1 overflow-y-auto">
-        <div className="max-w-3xl p-6 space-y-8 w-full">
+        <div className=" p-6 space-y-8 w-full">
 
-          <Card>
+          <Card className=" dark:bg-[#202020] dark:border-[#303030]">
             <CardContent className="p-6 space-y-6">
               <h2 className="text-lg font-semibold pb-2 border-b border-border">Aparência</h2>
               <div className="space-y-4">
                 <div>
                   <Label className="mb-4 block">Tema</Label>
-                  <RadioGroup defaultValue="dark" className="grid grid-cols-2 gap-4">
+                  <RadioGroup className="grid grid-cols-2 gap-4">
                     <Label
                       htmlFor="light"
                       className="flex cursor-pointer items-center justify-center rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground [&:has([data-state=checked])]:border-primary"
                     >
-                      <RadioGroupItem value="light" id="light" className="sr-only" />
+                      <RadioGroupItem value="light" id="light" className="sr-only" onClick={() => setTheme("light")}/>
                       <Palette className="h-5 w-5 mr-2" />
                       <span>Claro</span>
                     </Label>
@@ -30,7 +32,7 @@ export default function Settings() {
                       htmlFor="dark"
                       className="flex cursor-pointer items-center justify-center rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground [&:has([data-state=checked])]:border-primary"
                     >
-                      <RadioGroupItem value="dark" id="dark" className="sr-only" />
+                      <RadioGroupItem value="dark" id="dark" className="sr-only" onClick={() => setTheme("dark")}/>
                       <Moon className="h-5 w-5 mr-2" />
                       <span>Escuro</span>
                     </Label>
@@ -53,7 +55,7 @@ export default function Settings() {
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className=" dark:bg-[#202020] dark:border-[#303030]">
             <CardContent className="p-6 space-y-6">
               <h2 className="text-lg font-semibold pb-2 border-b border-border">Idioma</h2>
               <div className="space-y-4">
@@ -87,7 +89,7 @@ export default function Settings() {
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className=" dark:bg-[#202020] dark:border-[#303030]">
             <CardContent className="p-6 space-y-6">
               <h2 className="text-lg font-semibold pb-2 border-b border-border">Notificações</h2>
               <div className="space-y-4">

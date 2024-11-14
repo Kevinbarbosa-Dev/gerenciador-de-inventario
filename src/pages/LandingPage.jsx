@@ -32,11 +32,11 @@ export default function LandingPage() {
             <div className="flex items-center space-x-4">
               <Link
                 className="text-[#E8EAED] p-4 font-normal text-[17px] leading-[20px] hover:cursor-pointer hover:text-[#D90718] transition-colors duration-300"
-                to="#"
+                to="/Login"
               >
                 Entrar
               </Link>
-              <Link className="bg-[#D90718] text-[#E8EAED] border-0 p-4 rounded-[10px] font-normal text-[17px] leading-[20px] hover:cursor-pointer hover:text-[#202020] hover:bg-[#E8EAED] transition-colors duration-300">
+              <Link className="bg-[#D90718] text-[#E8EAED] border-0 p-4 rounded-[10px] font-normal text-[17px] leading-[20px] hover:cursor-pointer hover:text-[#202020] hover:bg-[#E8EAED] transition-colors duration-300" to="/Cadastrar">
                 Cadastrar
               </Link>
             </div>

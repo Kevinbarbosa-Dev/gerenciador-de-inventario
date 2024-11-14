@@ -1,27 +1,40 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import '../assets/styles/logAndSign.scss'  
+import { 
+  loginScreen, 
+  formContainer, 
+  formHeader, 
+  formToggle, 
+  formToggleActive, 
+  loginForm, 
+  inputStyle, 
+  submitButton, 
+  formFooter, 
+  formQuestion 
+} from '../assets/styles/tailwind/logAndSign'; 
 export default function Cadastrar() {
   return (
-    <div className="login-screen">
-      <div className="form-container">
-        <div className="form-header">
-          <span className="form-toggle-active">Cadastrar</span>
+    <body className='bg-[#E8EAED]'>
+    <div className={loginScreen}>
+      <div className={`${formContainer}`}>
+        <div className={`${formHeader}`}>
+          <h2 className={formToggleActive}>Cadastrar</h2>
         </div>
-        <form className="signup-form">
-          <input type="text" placeholder="Nome" required />
-          <input type="email" placeholder="Email" required />
-          <input type="password" placeholder="Senha" required />
-          <input type="password" placeholder="Confirmar Senha" required />
-          <button type="submit" className="submit-button">Cadastrar</button>
+        <form className={loginForm}>
+          <input type="text" className={inputStyle} placeholder="Nome" required />
+          <input type="email" className={inputStyle} placeholder="Email" required />
+          <input type="password" className={inputStyle} placeholder="Senha" required />
+          <input type="password" className={inputStyle} placeholder="Confirmar Senha" required />
+          <button type="submit"  className={submitButton}>Cadastrar</button>
         </form>
-        <div className='form-footer'>
-          <span className='form-question'>Já tem cadastro?</span>
-          <Link to="/" style={{ textDecoration: 'none' }}>
-            <span className="form-toggle">Entrar</span>
+        <div className={formFooter}>
+          <span className={formQuestion}>Já tem cadastro?</span>
+          <Link to="/Login" style={{ textDecoration: 'none' }}>
+            <span className={formToggle}>Entrar</span>
           </Link>
         </div>
       </div>
     </div>
+    </body>
   )
 }

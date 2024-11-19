@@ -19,16 +19,16 @@ const COLORS = [
 export function DonutChart({ data }) {
     const chartData = Object.entries(
         data.reduce((acc, item) => {
-            acc[item.categoria] = (acc[item.categoria] || 0) + item.quantidade;
+            acc[item.material] = (acc[item.material] || 0) + item.quantidade;
             return acc;
         }, {})
     ).map(([name, value]) => ({ name, value }));
 
     return (
-        <Card className="w-full h-full max-w-3xl mx-auto p-4 text-sm md:text-base dark:bg-[#202020] dark:border-[#303030] rounded-md">
+        <Card className="w-full h-full max-w-3xl mx-auto p-4 text-sm md:text-base bg-gray-100 border-gray-300 dark:bg-[#262626] dark:border-[#303030] rounded-md">
             <CardHeader>
                 <CardTitle >Distribuição de Produtos</CardTitle>
-                <CardDescription >Quantidade por categoria</CardDescription>
+                <CardDescription >Quantidade por material</CardDescription>
             </CardHeader>
             <CardContent className="flex items-center justify-between h-[calc(100%-5rem)] gap-4">
                <ChartContainer config={{}} className="w-full md:w-1/2 h-full">

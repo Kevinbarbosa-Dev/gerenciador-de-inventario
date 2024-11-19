@@ -33,7 +33,7 @@ export default function Tabela({ filteredInventory, onRemove, viewMode }) {
           <TableRow>
             <TableHead>ID</TableHead>
             <TableHead>Nome</TableHead>
-            <TableHead>Categoria</TableHead>
+            <TableHead>Material</TableHead>
             <TableHead>Descrição</TableHead>
             <TableHead>Quantidade</TableHead>
             <TableHead className="text-right">Valor</TableHead>
@@ -49,7 +49,7 @@ export default function Tabela({ filteredInventory, onRemove, viewMode }) {
             >
               <TableCell className="font-medium">{item.id}</TableCell>
               <TableCell>{item.nome}</TableCell>
-              <TableCell>{item.categoria}</TableCell>
+              <TableCell>{item.material}</TableCell>
               <TableCell>{item.descricao}</TableCell>
               <TableCell>{item.quantidade}</TableCell>
               <TableCell className="text-right">{item.valor}</TableCell>
@@ -71,9 +71,9 @@ export default function Tabela({ filteredInventory, onRemove, viewMode }) {
         </TableBody>
       </Table>
     ) : (
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 w-full">
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 w-full p-2">
         {filteredInventory.map((item) => (
-          <Card key={item.id}>
+          <Card key={item.id} className="bg-gray-100 border-gray-300 dark:bg-[#202020] dark:border-[#303030]">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">{item.nome}</CardTitle>
               <Badge variant="secondary">{item.quantidade} unidade{item.quantidade > 1 ? 's' : ''}</Badge>
@@ -82,7 +82,7 @@ export default function Tabela({ filteredInventory, onRemove, viewMode }) {
               <div className="flex items-center space-x-4">
                 <div>
                   <p className="text-xl font-bold">R$ {item.valor.toFixed(2)}</p>
-                  <p className="text-xs text-muted-foreground">{item.categoria}</p>
+                  <p className="text-xs text-muted-foreground">{item.material}</p>
                   <p className="text-xs text-muted-foreground">{item.descricao}</p>
                   <p className="text-xs text-muted-foreground">{item.fornecedor}</p>
                 </div>

@@ -9,13 +9,12 @@ import { DonutChart } from '@/components/DonutChart'
 import { LayoutGrid, LayoutList } from 'lucide-react'
 
 const initialData = [
-    { id: 1, nome: "Produto 1", categoria: "Categoria 1", descricao: "Descrição do Produto 1", quantidade: 10, valor: 100.00, fornecedor: "Fornecedor 1" },
-    { id: 2, nome: "Produto 2", categoria: "Categoria 2", descricao: "Descrição do Produto 2", quantidade: 5, valor: 50.00, fornecedor: "Fornecedor 2" },
-    { id: 3, nome: "Produto 3", categoria: "Categoria 3", descricao: "Descrição do Produto 3", quantidade: 8, valor: 80.00, fornecedor: "Fornecedor 3" },
-    { id: 4, nome: "Produto 4", categoria: "Categoria 4", descricao: "Descrição do Produto 4", quantidade: 12, valor: 120.00, fornecedor: "Fornecedor 4" },
-    { id: 5, nome: "Produto 5", categoria: "Categoria 5", descricao: "Descrição do Produto 5", quantidade: 7, valor: 70.00, fornecedor: "Fornecedor 5" },
-    { id: 6, nome: "Produto 6", categoria: "Categoria 6", descricao: "Descrição do Produto 6", quantidade: 9, valor: 90.00, fornecedor: "Fornecedor 6" },
-    // demais dados ...
+    { id: 1, nome: "Cadeira Gamer", material: "Couro Sintético", descricao: "Cadeira ergonômica para jogos e escritório", quantidade: 15, valor: 899.90, fornecedor: "GamerWorld" },
+    { id: 2, nome: "Mesa de Escritório", material: "Madeira MDF", descricao: "Mesa espaçosa para computador com gavetas", quantidade: 10, valor: 499.90, fornecedor: "MoveisFlex" },
+    { id: 3, nome: "Monitor 24 Polegadas", material: "Plástico e Metal", descricao: "Monitor Full HD com painel IPS", quantidade: 20, valor: 1249.00, fornecedor: "TechVision" },
+    { id: 4, nome: "Teclado Mecânico RGB", material: "Alumínio e Plástico", descricao: "Teclado gamer com iluminação personalizável", quantidade: 30, valor: 299.90, fornecedor: "GameZone" },
+    { id: 5, nome: "Mouse Sem Fio", material: "Plástico", descricao: "Mouse ergonômico com alta precisão e bateria recarregável", quantidade: 25, valor: 199.90, fornecedor: "WirelessTech" },
+    { id: 6, nome: "Headset com Microfone", material: "Plástico e Couro", descricao: "Headset com som estéreo e microfone ajustável", quantidade: 18, valor: 349.90, fornecedor: "AudioMax" }
 ]
 
 export default function Dashboard() {
@@ -28,7 +27,7 @@ export default function Dashboard() {
     const filteredInventory = useMemo(() => {
         let result = inventorio.filter(item =>
             item.nome.toLowerCase().includes(pesquisar.toLowerCase()) ||
-            item.categoria.toLowerCase().includes(pesquisar.toLowerCase())
+            item.material.toLowerCase().includes(pesquisar.toLowerCase())
         )
 
         if (isAlphabetical) {
@@ -52,12 +51,12 @@ export default function Dashboard() {
 
     const totalItems = inventorio.reduce((sum, item) => sum + item.quantidade, 0)
     const totalValue = inventorio.reduce((sum, item) => sum + item.valor, 0);
-    const categories = [...new Set(inventorio.map(item => item.categoria))];
+    const materiais = [...new Set(inventorio.map(item => item.material))];
     const suppliers = [...new Set(inventorio.map(item => item.fornecedor))];
 
     return (
         <main className="grid grid-rows-[42%_8%_50%] w-full max-w-[1200px] h-screen">
-            <div className="shadow-[0_0_2px_rgba(0,0,0,0.1)] w-full flex items-center justify-center transition-all duration-500 border-b-[1px] bg-[#E8EAED] border-b-gray-300 dark:border-b-gray-700 dark:bg-[#202020]">
+            <div className="shadow-[0_0_2px_rgba(0,0,0,0.1)] w-full flex items-center justify-center transition-all duration-500 border-b-[1px] bg-gray-100 border-gray-300 dark:border-[#303030] dark:bg-[#262626]">
                 <div className='flex w-full h-full ml-2'>
                     <div className="flex items-center justify-center w-full h-full">
                         <RelatorioTabela inventorio={inventorio} totalItems={totalItems} totalValue={totalValue} />
@@ -67,37 +66,38 @@ export default function Dashboard() {
                     </div>
                 </div>
             </div>
-            <div className="flex gap-2 justify-between p-2 dark:bg-[#202020]">
-                <Button onClick={() => setOpen(true)}>Adicionar Produto</Button>
+            <div className="flex gap-2 justify-between p-2 bg-gray-100 dark:bg-[#262626]">
+                <Button onClick={() => setOpen(true)} className="dark:bg-[#E8EAED] dark:border-[#303030] dark:text-[#202020]">Adicionar Produto</Button>
                 <ModalAdd
                     open={open}
                     onOpenChange={setOpen}
                     onAddItem={handleAddItem}
-                    categories={categories}
+                    materiais={materiais}
                     suppliers={suppliers} />
                 <div className="flex gap-2">
-                    <Button variant="outline" size="icon" title="Filtrar">
-                        <ListFilter className="h-4 w-4 dark:text-gray-200" />
+                    <Button variant="outline" size="icon" title="Filtrar" className="dark:bg-[#E8EAED] dark:border-[#303030] dark:text-[#202020]">
+                        <ListFilter className="h-4 w-4 dark:text-[#202020]" />
                     </Button>
                     <Button
+                        className="dark:bg-[#E8EAED] dark:border-[#303030] dark:text-[#202020]"
                         variant="outline" size="icon" onClick={toggleSort}
                         title={isAlphabetical ? "Voltar à ordem original" : "Ordenar alfabeticamente"}>
-                        {isAlphabetical ? <SortDesc className="h-4 w-4 dark:text-gray-200" /> : <SortAsc className="h-4 w-4 dark:text-gray-200" />}
+                        {isAlphabetical ? <SortDesc className="h-4 w-4 dark:text-[#202020]" /> : <SortAsc className="h-4 w-4 dark:text-[#202020]" />}
                     </Button>
                     <div className="relative flex-1 max-w-sm">
                         <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground dark:text-gray-400" />
                         <Input
                             placeholder="Pesquisar produtos..." value={pesquisar}
                             onChange={(e) => setPesquisar(e.target.value)}
-                            className="pl-8 dark:bg-gray-700 dark:text-gray-200" />
+                            className="pl-8 dark:bg-[#202020] dark:text-gray-200 dark:border-[#303030]"/>
                     </div>
-                    <Button onClick={() => setViewMode(viewMode === 'table' ? 'list' : 'table')}>
-                        {viewMode === 'table' ? <LayoutList className="mr-2 h-4 w-4 dark:text-gray-200" /> : <LayoutGrid className="mr-2 h-4 w-4 dark:text-gray-200" />}
-                        {viewMode === 'table' ? 'Mode Lista' : 'Mode Tabela'}
+                    <Button className="dark:bg-[#E8EAED] dark:border-[#303030] dark:text-[#202020] " onClick={() => setViewMode(viewMode === 'table' ? 'list' : 'table')}>
+                        {viewMode === 'table' ? <LayoutList className="mr-2 h-4 w-4 dark:text-[#202020]" /> : <LayoutGrid className="mr-2 h-4 w-4 dark:text-[#202020]" />}
+                        {viewMode === 'table' ? 'Lista' : 'Tabela'}
                     </Button>
                 </div>
             </div>
-            <div className="overflow-hidden w-full shadow-[0_0_2px_rgba(0,0,0,0.1)] bg-white dark:bg-[#202020] flex justify-between transition-all duration-500 border-t-[1px] border-t-gray-300 dark:border-t-gray-900">
+            <div className="overflow-hidden w-full shadow-[0_0_2px_rgba(0,0,0,0.1)] bg-gray-100 dark:bg-[#262626] flex justify-between transition-all duration-500 border-t-[1px] border-gray-300 dark:border-[#303030]">
                 <Tabela filteredInventory={filteredInventory} onRemove={handleRemove} viewMode={viewMode} />
             </div>
         </main>

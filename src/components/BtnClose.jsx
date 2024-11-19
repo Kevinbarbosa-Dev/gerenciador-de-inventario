@@ -1,5 +1,5 @@
 import React from 'react';
-import '../assets/styles/Sidebar/sidebar.scss';
+import '../assets/styles/Sidebar/sidebar.css';
 import { DoubleArrowLeftIcon } from "@radix-ui/react-icons";
 export default function BtnClose({onClick, mouseSobreSidebar}){
     return(

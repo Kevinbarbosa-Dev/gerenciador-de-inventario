@@ -12,7 +12,6 @@ import {
 } from './components/SideBar';
 import Dashboard from './pages/Dashboard';
 import Settings from './pages/Settings';
-import Relatorio from './pages/Relatorio';
 import '../src/assets/styles/App.css';
 import { DashboardIcon, GearIcon, ReaderIcon, HomeIcon } from "@radix-ui/react-icons";
 import UserDropDown from './components/UserDropDown';
@@ -39,13 +38,14 @@ export default function Layout() {
         return () => {
             window.removeEventListener('resize', handleResize);
         };
-    }, [windowWidth]); 
+    }, [windowWidth]);
 
     const toggleSidebar = () => {
         setIsOpen(!sidebarIsOpen);
     };
 
     return (
+        <body className='bg-gray-100 dark:bg-[#262626]'>
         <div className={`app-container ${sidebarIsOpen ? '' : 'app-container-sidebar-closed'}`}>
             {!sidebarIsOpen && (
                 <BtnOpen onClick={toggleSidebar} />
@@ -68,9 +68,6 @@ export default function Layout() {
                             <SideBarNavLink to="/dashboard">
                                 <DashboardIcon /> Dashboard
                             </SideBarNavLink>
-                            <SideBarNavLink to="/relatorio">
-                                <ReaderIcon /> Relatório
-                            </SideBarNavLink>
                             <SideBarNavLink to="/settings">
                                 <GearIcon /> Configuração
                             </SideBarNavLink>
@@ -84,14 +81,15 @@ export default function Layout() {
                 </SideBarFooter>
             </SideBar>
 
-            <main className={`main-content ${sidebarIsOpen ? '' : 'active'}`}>
+            <main className={`transition-[margin-left] duration-300 ease-out flex justify-center items-center h-full ${sidebarIsOpen ? '' : 'w-full'
+                }`}>
                 <Routes>
                     <Route path="/" element={<Dashboard />} />
                     <Route path="/dashboard" element={<Dashboard />} />
-                    <Route path="/relatorio" element={<Relatorio />} />
                     <Route path="/settings" element={<Settings />} />
                 </Routes>
             </main>
         </div>
+        </body>
     );
 }

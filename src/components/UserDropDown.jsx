@@ -31,15 +31,11 @@ export default function UserDropDown({ mouseSobreSidebar }) {
                 <BtnSetaBaixa mouseSobreSidebar={mouseSobreSidebar}/>       
             </div>
             <div className={`absolute top-full left-0 bg-white shadow-lg rounded-md overflow-hidden transition-all duration-300 ease-in-out transform ${isOpen ? 'opacity-100 max-h-64 visible translate-y-0' : 'opacity-0 max-h-0 invisible -translate-y-2'}`}>
-                <Link to="/profile/settings" className={`${dropdownItemClasses}`}>
-                    <GearIcon className="mr-2" />
-                    Configurações
-                </Link>
                 <Link to="/" className={`${dropdownItemClasses}`}>
                     <LightningBoltIcon className="mr-2" />
                     Update
                 </Link>
-                <Link className={`${dropdownItemClasses}`}>
+                <Link to="/LandingPage" className={`${dropdownItemClasses}`}>
                     <ExitIcon className="mr-2" />
                     Sair
                 </Link>

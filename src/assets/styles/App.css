@@ -23,17 +23,6 @@ body {
     }
 }
 
-.main-content {
-    transition: margin-left 0.3s ease;
-    display: flex; 
-    justify-content: center; 
-    align-items: center;
-    height: 100%; 
-
-    &.active{
-        width: 100%;
-    }
-}
 
 @layer base {
   :root {

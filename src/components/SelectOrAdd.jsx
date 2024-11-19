@@ -1,7 +1,8 @@
 // components/DynamicSelect.js
+import { Input } from '../components/ui/input';
 import React, { useState } from 'react';
 
-export default function DynamicSelect({ label, options, value, onChange}) {
+export default function SelectOrAdd({ label, options, value, onChange}) {
     const [inputValue, setInputValue] = useState('');
     const [showInput, setShowInput] = useState(false);
 
@@ -19,7 +20,7 @@ export default function DynamicSelect({ label, options, value, onChange}) {
         <div className="grid gap-2">
             <label>{label}</label>
             {!showInput ? (
-                <select value={value || ''} onChange={handleSelectChange} className="p-2 border rounded">
+                <select value={value || ''} onChange={handleSelectChange} className="p-2 border rounded dark:bg-[#202020] dark:border-[#303030]">
                     <option value="">Selecione uma opção</option>
                     {options.map((option, index) => (
                         <option key={index} value={option}>
@@ -30,7 +31,7 @@ export default function DynamicSelect({ label, options, value, onChange}) {
                 </select>
             ) : (
                 <div className="flex items-center gap-2">
-                    <input
+                    <Input
                         type="text"
                         value={inputValue}
                         onChange={(e) => setInputValue(e.target.value)}

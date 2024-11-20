@@ -13,11 +13,10 @@ import {
 import Dashboard from './pages/Dashboard';
 import Settings from './pages/Settings';
 import '../src/assets/styles/App.css';
-import { DashboardIcon, GearIcon, ReaderIcon, HomeIcon } from "@radix-ui/react-icons";
+import { DashboardIcon, GearIcon } from "@radix-ui/react-icons";
 import UserDropDown from './components/UserDropDown';
 import BtnOpen from './components/BtnOpen';
 import BtnClose from './components/BtnClose';
-import LandingPage from './pages/LandingPage';
 
 export default function Layout() {
     const [sidebarIsOpen, setIsOpen] = useState(true);
@@ -65,17 +64,17 @@ export default function Layout() {
                 <SideBarMain>
                     <SideBarNav>
                         <SideBarNavMain>
-                            <SideBarNavLink to="/dashboard">
+                            <SideBarNavLink to={"/app/dashboard"}>
                                 <DashboardIcon /> Dashboard
                             </SideBarNavLink>
-                            <SideBarNavLink to="/settings">
+                            <SideBarNavLink to={"/app/settings"}>
                                 <GearIcon /> Configuração
                             </SideBarNavLink>
                         </SideBarNavMain>
                     </SideBarNav>
                 </SideBarMain>
                 <SideBarFooter>
-                    <SideBarFooterLink to={"/LandingPage"}>
+                    <SideBarFooterLink to="/">
                         <img src="./src/assets/img/favicon-32x32.png" /> Stock
                     </SideBarFooterLink>
                 </SideBarFooter>
@@ -84,9 +83,8 @@ export default function Layout() {
             <main className={`transition-[margin-left] duration-300 ease-out flex justify-center items-center h-full ${sidebarIsOpen ? '' : 'w-full'
                 }`}>
                 <Routes>
-                    <Route path="/" element={<Dashboard />} />
-                    <Route path="/dashboard" element={<Dashboard />} />
-                    <Route path="/settings" element={<Settings />} />
+                    <Route path="dashboard" element={<Dashboard />} />
+                    <Route path="settings" element={<Settings />} />
                 </Routes>
             </main>
         </div>

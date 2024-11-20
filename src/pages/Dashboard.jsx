@@ -2,7 +2,7 @@ import React, { useState, useMemo } from 'react'
 import Tabela from '../components/Tabela'
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
-import { Search, SortAsc, SortDesc, ListFilter } from 'lucide-react'
+import { Search, SortAsc, SortDesc} from 'lucide-react'
 import ModalAdd from '@/components/ModalAdd'
 import RelatorioTabela from '../components/RelatorioTabela'
 import { DonutChart } from '@/components/DonutChart'
@@ -75,9 +75,6 @@ export default function Dashboard() {
                     materiais={materiais}
                     suppliers={suppliers} />
                 <div className="flex gap-2">
-                    <Button variant="outline" size="icon" title="Filtrar" className="dark:bg-[#E8EAED] dark:border-[#303030] dark:text-[#202020]">
-                        <ListFilter className="h-4 w-4 dark:text-[#202020]" />
-                    </Button>
                     <Button
                         className="dark:bg-[#E8EAED] dark:border-[#303030] dark:text-[#202020]"
                         variant="outline" size="icon" onClick={toggleSort}

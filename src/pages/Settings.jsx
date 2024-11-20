@@ -127,7 +127,7 @@ export default function Settings() {
                     <Label className="mb-2 block">{t.fontSize}</Label>
                     <Select value={fontSize} onValueChange={handleFontSizeChange}>
                       <SelectTrigger className="w-full border-gray-300 bg-gray-100 hover:border-gray-400 dark:bg-[#262626] dark:border-[#303030]">
-                        <SelectValue placeholder={t.setFontSize}/>
+                        <SelectValue placeholder={setFontSize}/>
                       </SelectTrigger>
                       <SelectContent className="dark:bg-[#202020]">
                         <SelectItem value="small">{t.small}</SelectItem>

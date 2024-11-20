@@ -3,7 +3,7 @@
 export const loginScreen = "flex justify-center items-center h-screen";
 export const formContainer = "bg-[#E8EAED] p-8 rounded-md shadow-lg w-full max-w-md";
 export const formHeader = "flex gap-2.5 justify-center mb-6";
-export const formToggle = "text-lg text-[inactive-color] cursor-pointer hover:text-[#202020]";
+export const formToggle = "text-lg text-[inactive-color] cursor-pointer text-[#202020]";
 export const formToggleActive = "text-lg text-[#202020]";
 export const loginForm = "flex flex-col gap-4";
 export const inputStyle = "p-3 border-none rounded-md text-base shadow-sm";

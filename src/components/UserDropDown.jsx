@@ -35,7 +35,7 @@ export default function UserDropDown({ mouseSobreSidebar }) {
                     <LightningBoltIcon className="mr-2" />
                     Update
                 </Link>
-                <Link to="/LandingPage" className={`${dropdownItemClasses}`}>
+                <Link to="/Login" className={`${dropdownItemClasses}`}>
                     <ExitIcon className="mr-2" />
                     Sair
                 </Link>

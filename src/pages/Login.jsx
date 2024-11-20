@@ -1,5 +1,6 @@
-import React from 'react'
+
 import { Link } from 'react-router-dom'
+import { Button } from '@/components/ui/button';
 import { 
   loginScreen, 
   formContainer, 
@@ -26,6 +27,13 @@ export default function Login() {
           <input type="password" placeholder="Senha" required className={inputStyle} />
           <button type="submit" className={submitButton}>Entrar</button>
         </form>
+        <Button className="w-full shadow-md bg-transparent hover:bg-transparent text-black font-bold mt-2">
+        <Link
+          to="/app/dashboard"
+        >
+          Acessar como Visitante
+        </Link>
+        </Button>
         <div className={formFooter}>
           <span className={formQuestion}>Não tem cadastro?</span>
           <Link to="/Cadastrar" style={{ textDecoration: 'none' }}>

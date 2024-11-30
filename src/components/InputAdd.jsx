@@ -1,11 +1,10 @@
-// InputAdd.js
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import SelectOrAdd from './SelectOrAdd';
 
-export default function InputAdd({ onSubmit, onCancel,materiais, suppliers }) {
+export default function InputAdd({ onSubmit, onCancel, materiais, suppliers, initialData }) {
     const [formData, setFormData] = useState({
         id: "",
         nome: "",
@@ -15,6 +14,12 @@ export default function InputAdd({ onSubmit, onCancel,materiais, suppliers }) {
         valor: "",
         fornecedor: "",
     });
+
+    useEffect(() => {
+        if (initialData) {
+            setFormData(initialData);
+        }
+    }, [initialData]);
 
     const handleChange = (id, value) => {
         setFormData((prevData) => ({ ...prevData, [id]: value }));
@@ -35,19 +40,23 @@ export default function InputAdd({ onSubmit, onCancel,materiais, suppliers }) {
             <div className="grid gap-2 py-4">
                 <Label htmlFor="id">ID</Label>
                 <Input
-                id="id" 
-                type="number" 
-                value={formData.id} 
-                onChange={(e) => handleChange('id', e.target.value)} 
-                placeholder="Digite o ID" required/>
+                    id="id" 
+                    type="number" 
+                    value={formData.id} 
+                    onChange={(e) => handleChange('id', e.target.value)} 
+                    placeholder="Digite o ID" 
+                    required
+                    disabled={initialData}
+                />
 
                 <Label htmlFor="nome">Produto</Label>
                 <Input 
-                id="nome" 
-                value={formData.nome} 
-                onChange={(e) => handleChange('nome', e.target.value)} 
-                placeholder="Digite o nome do produto" 
-                required/>
+                    id="nome" 
+                    value={formData.nome} 
+                    onChange={(e) => handleChange('nome', e.target.value)} 
+                    placeholder="Digite o nome do produto" 
+                    required
+                />
 
                 <SelectOrAdd
                     label="Material"
@@ -58,16 +67,32 @@ export default function InputAdd({ onSubmit, onCancel,materiais, suppliers }) {
 
                 <Label htmlFor="descricao">Descrição</Label>
                 <Input 
-                id="descricao" 
-                value={formData.descricao} 
-                onChange={(e) => handleChange('descricao', e.target.value)} 
-                placeholder="Digite a descrição" />
+                    id="descricao" 
+                    value={formData.descricao} 
+                    onChange={(e) => handleChange('descricao', e.target.value)} 
+                    placeholder="Digite a descrição" 
+                />
 
                 <Label htmlFor="quantidade">Quantidade</Label>
-                <Input id="quantidade" type="number" value={formData.quantidade} onChange={(e) => handleChange('quantidade', e.target.value)} placeholder="Digite a quantidade" required/>
+                <Input 
+                    id="quantidade" 
+                    type="number" 
+                    value={formData.quantidade} 
+                    onChange={(e) => handleChange('quantidade', e.target.value)} 
+                    placeholder="Digite a quantidade" 
+                    required
+                />
 
                 <Label htmlFor="valor">Preço</Label>
-                <Input id="valor" type="number" step="0.01" value={formData.valor} onChange={(e) => handleChange('valor', e.target.value)} placeholder="Digite o preço" required />
+                <Input 
+                    id="valor" 
+                    type="number" 
+                    step="0.01" 
+                    value={formData.valor} 
+                    onChange={(e) => handleChange('valor', e.target.value)} 
+                    placeholder="Digite o preço" 
+                    required 
+                />
 
                 <SelectOrAdd
                     label="Fornecedor"
@@ -80,9 +105,12 @@ export default function InputAdd({ onSubmit, onCancel,materiais, suppliers }) {
                     <Button className='dark:bg-[#202020] dark:border-[#303030]' type="button" variant="outline" onClick={onCancel}>
                         Cancelar
                     </Button>
-                    <Button className='dark:bg-[#E8EAED] dark:text-[#202020]' type="submit">Adicionar</Button>
+                    <Button className='dark:bg-[#E8EAED] dark:text-[#202020]' type="submit">
+                        {initialData ? 'Atualizar' : 'Adicionar'}
+                    </Button>
                 </div>
             </div>
         </form>
     );
 }
+

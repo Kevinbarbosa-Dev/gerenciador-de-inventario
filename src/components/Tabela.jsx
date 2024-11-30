@@ -8,12 +8,12 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import { Button } from "@/components/ui/button"
-import { Trash2 } from 'lucide-react'
+import { Trash2, Edit2 } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { ScrollArea } from "@/components/ui/scroll-area"
 
-export default function Tabela({ filteredInventory, onRemove, viewMode }) {
+export default function Tabela({ filteredInventory, onRemove, onEdit, viewMode}) {
   const [hoveredRow, setHoveredRow] = useState(null)
 
   if (filteredInventory.length === 0) {
@@ -56,14 +56,24 @@ export default function Tabela({ filteredInventory, onRemove, viewMode }) {
               <TableCell>{item.fornecedor}</TableCell>
               <TableCell>
                 {hoveredRow === item.id && (
+                  <div className="flex gap-2 float-right">
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    onClick={() => onEdit(item)}
+                    className="shadow-md hover:shadow-lg transition-shadow h-4 w-4"
+                  >
+                    <Edit2 />
+                  </Button>
                   <Button
                     variant="ghost"
                     size="icon"
                     onClick={() => onRemove(item.id)}
-                    className="float-right shadow-md hover:shadow-lg transition-shadow h-4 w-4 mr-2"
+                    className="shadow-md hover:shadow-lg transition-shadow h-4 w-4"
                   >
-                    <Trash2/>
+                    <Trash2 />
                   </Button>
+                </div>
                 )}
               </TableCell>
             </TableRow>

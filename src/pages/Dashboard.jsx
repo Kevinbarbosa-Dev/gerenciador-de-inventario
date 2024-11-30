@@ -22,7 +22,8 @@ export default function Dashboard() {
     const [inventorio, setInventorio] = useState(initialData)
     const [isAlphabetical, setIsAlphabetical] = useState(false)
     const [open, setOpen] = useState(false);
-    const [viewMode, setViewMode] = useState('table')
+    const [viewMode, setViewMode] = useState('table');
+    const [editingItem, setEditingItem] = useState(null);
 
     const filteredInventory = useMemo(() => {
         let result = inventorio.filter(item =>
@@ -46,8 +47,21 @@ export default function Dashboard() {
     }
 
     const handleAddItem = (newItem) => {
-        setInventorio(prevInventorio => [...prevInventorio, { ...newItem, id: prevInventorio.length + 1 }])
-    }
+        if (editingItem) {
+            setInventorio(prevInventorio => prevInventorio.map(item => 
+                item.id === editingItem.id ? { ...item, ...newItem } : item
+            ));
+            setEditingItem(null);
+        } else {
+            setInventorio(prevInventorio => [...prevInventorio, { ...newItem, id: prevInventorio.length + 1 }]);
+        }
+        setOpen(false);
+    };
+
+    const handleEdit = (item) => {
+        setEditingItem(item);
+        setOpen(true);
+    };
 
     const totalItems = inventorio.reduce((sum, item) => sum + item.quantidade, 0)
     const totalValue = inventorio.reduce((sum, item) => sum + item.valor, 0);
@@ -73,7 +87,8 @@ export default function Dashboard() {
                     onOpenChange={setOpen}
                     onAddItem={handleAddItem}
                     materiais={materiais}
-                    suppliers={suppliers} />
+                    suppliers={suppliers}
+                    editingItem={editingItem} />
                 <div className="flex gap-2">
                     <Button
                         className="dark:bg-[#E8EAED] dark:border-[#303030] dark:text-[#202020]"
@@ -95,7 +110,7 @@ export default function Dashboard() {
                 </div>
             </div>
             <div className="overflow-hidden w-full shadow-[0_0_2px_rgba(0,0,0,0.1)] bg-gray-100 dark:bg-[#262626] flex justify-between transition-all duration-500 border-t-[1px] border-gray-300 dark:border-[#303030]">
-                <Tabela filteredInventory={filteredInventory} onRemove={handleRemove} viewMode={viewMode} />
+                <Tabela filteredInventory={filteredInventory} onEdit={handleEdit} onRemove={handleRemove} viewMode={viewMode} />
             </div>
         </main>
     )

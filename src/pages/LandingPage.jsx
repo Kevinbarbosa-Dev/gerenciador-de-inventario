@@ -6,6 +6,11 @@ import DashboardBlack from "../assets/img/dashboard-black.png";
 import DashboardWhite from "../assets/img/dashboard-white.png";
 
 export default function LandingPage() {
+  const plans = [
+    { price: "$7.99", title: "Básico", storage: "100GB", featured: false },
+    { price: "$9.99", title: "Padrão", storage: "500GB", featured: true },
+    { price: "$11.99", title: "Premium", storage: "2TB", featured: false }
+  ];
   return (
     <div className="min-h-screen w-full bg-[#262626] text-white">
       <header className="sticky top-0 z-50 bg-[#262626] py-4 px-4">
@@ -99,37 +104,39 @@ export default function LandingPage() {
           <div className="max-w-7xl mx-auto px-4">
             <h2 className="text-3xl font-bold text-center mb-12">Nossos Planos</h2>
             <div className="grid gap-6 md:grid-cols-3">
-              {[{ price: "$7.99", title: "Básico" }, { price: "$9.99", title: "Padrão", featured: true }, { price: "$11.99", title: "Premium" }].map((plan, index) => (
-                <Card
-                  key={index}
-                  className={`flex flex-col ${plan.featured ? "border-2 border-[#D90718] bg-[#202020]" : "border-[#E5E7EB] bg-[#262626]"
-                    }`}
-                >
-                  <CardHeader>
-                    <h3 className="text-lg font-bold text-white">{plan.title}</h3>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="text-3xl font-bold text-white">
-                      {plan.price}
-                      <span className="text-base font-normal text-[#9AA0A6]">/mês</span>
-                    </div>
-                    <p className="mt-2 text-sm text-[#9AA0A6]">
-                      5000 de armazenamento com recursos particulares
-                    </p>
-                  </CardContent>
-                  <CardFooter>
-                    <Button
-                      className={`w-full ${plan.featured
-                        ? "bg-[#D90718] text-white hover:bg-[#B00614]"
-                        : "bg-[#E5E7EB] text-[#262626] hover:bg-[#BDC1C6]"
-                        }`}
-                    >
-                      Começar agora
-                    </Button>
-                  </CardFooter>
-                </Card>
-              ))}
+      {plans.map((plan, index) => (
+        <Card
+          key={index}
+          className={`flex flex-col ${
+            plan.featured ? "border-2 border-[#D90718] bg-[#202020]" : "border-[#E5E7EB] bg-[#262626]"
+          }`}
+        >
+          <CardHeader>
+            <h3 className="text-lg font-bold text-white">{plan.title}</h3>
+          </CardHeader>
+          <CardContent>
+            <div className="text-3xl font-bold text-white">
+              {plan.price}
+              <span className="text-base font-normal text-[#9AA0A6]">/mês</span>
             </div>
+            <p className="mt-2 text-sm text-[#9AA0A6]">
+              {plan.storage} de armazenamento com recursos particulares
+            </p>
+          </CardContent>
+          <CardFooter>
+            <Button
+              className={`w-full ${
+                plan.featured
+                  ? "bg-[#D90718] text-white hover:bg-[#B00614]"
+                  : "bg-[#E5E7EB] text-[#262626] hover:bg-[#BDC1C6]"
+              }`}
+            >
+              Começar agora
+            </Button>
+          </CardFooter>
+        </Card>
+      ))}
+    </div>
           </div>
         </section>
       </main>

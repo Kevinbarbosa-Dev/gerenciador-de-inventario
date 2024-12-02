@@ -14,19 +14,19 @@ export default function PricingModal({ isOpen, onClose }) {
     {
       name: "Básico",
       price: "7.99",
-      storage: "5000 de armazenamento com recursos particulares",
+      storage: "100GB de armazenamento com recursos particulares",
       highlighted: false
     },
     {
       name: "Padrão",
       price: "9.99",
-      storage: "5000 de armazenamento com recursos particulares",
+      storage: "500GB de armazenamento com recursos particulares",
       highlighted: true
     },
     {
       name: "Premium",
       price: "11.99",
-      storage: "5000 de armazenamento com recursos particulares",
+      storage: "2TB de armazenamento com recursos particulares",
       highlighted: false
     }
   ]

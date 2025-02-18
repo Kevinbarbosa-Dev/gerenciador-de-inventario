@@ -2,11 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import '../assets/styles/Sidebar/sidebar.css';
 
-export function SideBar({ children, sidebarIsOpen, mouseDentro, mouseFora }) {
+export function SideBar({ children, sidebarIsOpen, mouseDentro, mouseFora, isMobile }) {
     return (
         <aside
             className={`
-                ${sidebarIsOpen ? 'translate-x-0 opacity-100' : '-translate-x-full opacity-0 hidden'}
+                ${sidebarIsOpen ? 'translate-x-0 opacity-100' : '-translate-x-full opacity-0'}
+                ${isMobile ? 'fixed inset-y-0 left-0 z-50 w-64' : ''}
                 flex flex-col transition-all duration-300 ease-in-out bg-gray-200 border-gray-300 dark:bg-[#202020] dark:border-[#303030] border-r
             `}
             onMouseEnter={mouseDentro}

@@ -26,8 +26,8 @@ export default function Tabela({ filteredInventory, onRemove, onEdit, viewMode})
 
   return (
     <div className="flex flex-col w-full">
-    <ScrollArea className="h-[calc(100vh-120px)]">
     {viewMode === 'table' ? (
+      <ScrollArea className="h-full w-full rounded-md border">
       <Table>
         <TableHeader>
           <TableRow>
@@ -80,8 +80,10 @@ export default function Tabela({ filteredInventory, onRemove, onEdit, viewMode})
           ))}
         </TableBody>
       </Table>
+      </ScrollArea>
     ) : (
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 w-full p-2">
+      <ScrollArea className="h-[400px] w-full rounded-md border">
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 w-full lg:p-2">
         {filteredInventory.map((item) => (
           <Card key={item.id} className="bg-gray-100 border-gray-300 dark:bg-[#202020] dark:border-[#303030]">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
@@ -101,8 +103,8 @@ export default function Tabela({ filteredInventory, onRemove, onEdit, viewMode})
           </Card>
         ))}
       </div>
+      </ScrollArea>
     )}
-    </ScrollArea>
     </div>
   )
 }

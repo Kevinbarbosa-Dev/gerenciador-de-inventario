@@ -95,11 +95,9 @@ export default function Settings() {
   return (
     <div className="flex h-screen w-full bg-gray-100  dark:bg-[#262626]">
       <div className="flex-1">
-        <ScrollArea className="h-full w-full">
-          <ScrollBar className=" dark:bg-[#404040]" />
-          <div className=" p-6 space-y-8 w-full">
+          <div className="space-y-8 w-full lg-p-6">
             <Card className="dark:bg-[#262626] dark:border-[#303030]">
-              <CardContent className="p-6 space-y-6">
+              <CardContent className="p-4 space-y-6">
                 <h2 className="text-lg font-semibold pb-2 border-b border-border">{t.appearance}</h2>
                 <div className="space-y-4">
                   <div>
@@ -141,7 +139,7 @@ export default function Settings() {
             </Card>
 
             <Card className=" dark:bg-[#262626] dark:border-[#303030]">
-              <CardContent className="p-6 space-y-6">
+              <CardContent className="lg:p-6 p-4 space-y-6">
                 <h2 className="text-lg font-semibold pb-2 border-b border-border">{t.language}</h2>
                 <div className="space-y-4">
                   <div>
@@ -175,7 +173,7 @@ export default function Settings() {
             </Card>
 
             <Card className=" dark:bg-[#262626] dark:border-[#303030]">
-              <CardContent className="p-6 space-y-6">
+              <CardContent className="lg:p-6 p-4 space-y-6">
                 <h2 className="text-lg font-semibold pb-2 border-b border-border">{t.notification}</h2>
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
@@ -189,7 +187,6 @@ export default function Settings() {
               </CardContent>
             </Card>
           </div>
-        </ScrollArea>
       </div>
     </div>
   )

@@ -17,13 +17,14 @@ import Settings from "./pages/Settings"
 import "../src/assets/styles/App.css"
 import { DashboardIcon, GearIcon } from "@radix-ui/react-icons"
 import UserDropDown from "./components/UserDropDown"
-import BtnOpen from "./components/BtnOpen"
 import BtnClose from "./components/BtnClose"
+import BottomNav from "./components/BottomNav"
 
 export default function Layout() {
   const [sidebarIsOpen, setSidebarIsOpen] = useState(false)
   const [mouseSobreSidebar, setMouseSobreSidebar] = useState(false)
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [open, setOpen] = useState(false)
 
   const handleResize = useCallback(() => {
     setWindowWidth(window.innerWidth)
@@ -41,22 +42,17 @@ export default function Layout() {
     }
   }, [windowWidth, handleResize])
 
-  const toggleSidebar = useCallback(() => {
-    setSidebarIsOpen((prevState) => !prevState)
-  }, [])
-
   const isMobile = windowWidth <= 425
 
   return (
     <div className="bg-gray-100 dark:bg-[#262626] min-h-screen">
-      <div className={`app-container ${sidebarIsOpen ? "" : "app-container-sidebar-closed"}`}>
-        {!sidebarIsOpen && (
-          <div className={`fixed top-0 left-0 z-50 p-4 ${isMobile ? "" : "md:p-2"}`}>
-            <BtnOpen onClick={toggleSidebar} />
-          </div>
-        )}
+      <div
+        className={`app-container 
+      ${sidebarIsOpen ? "" : "app-container-sidebar-closed"}`}>
+
         <div
-          className={`fixed inset-0 bg-black bg-opacity-50 z-40 transition-opacity ${sidebarIsOpen && isMobile ? "opacity-100" : "opacity-0 pointer-events-none"}`}
+          className={`fixed inset-0 bg-black bg-opacity-50 z-40 transition-opacity 
+          ${sidebarIsOpen && isMobile ? "opacity-100" : "opacity-0 pointer-events-none"}`}
           onClick={() => isMobile && setSidebarIsOpen(false)}
         />
 
@@ -70,15 +66,14 @@ export default function Layout() {
             <div className="flex justify-center items-center gap-1">
               <UserDropDown mouseSobreSidebar={mouseSobreSidebar} />
             </div>
-            {(isMobile || mouseSobreSidebar) && <BtnClose onClick={toggleSidebar} mouseSobreSidebar={true} />}
           </SideBarHeader>
           <SideBarMain>
             <SideBarNav>
               <SideBarNavMain>
-                <SideBarNavLink to={"/app/dashboard"} onClick={() => isMobile && toggleSidebar()}>
+                <SideBarNavLink to={"/app/dashboard"}>
                   <DashboardIcon /> Dashboard
                 </SideBarNavLink>
-                <SideBarNavLink to={"/app/settings"} onClick={() => isMobile && toggleSidebar()}>
+                <SideBarNavLink to={"/app/settings"}>
                   <GearIcon /> Configuração
                 </SideBarNavLink>
               </SideBarNavMain>
@@ -92,13 +87,21 @@ export default function Layout() {
         </SideBar>
 
         <main
-          className={`transition-[margin-left] duration-300 ease-out flex justify-center items-center h-full ${sidebarIsOpen && !isMobile ? "" : "w-full"}`}
+          className={`transition-[margin-left] duration-300 ease-out flex justify-center items-center h-full 
+            ${sidebarIsOpen && !isMobile ? "" : "w-full"}`}
         >
           <Routes>
-            <Route path="dashboard" element={<Dashboard />} />
+            <Route path="dashboard" element={<Dashboard open={open} setOpen={setOpen} />} />
             <Route path="settings" element={<Settings />} />
           </Routes>
         </main>
+        {isMobile && (
+          <BottomNav
+            setSidebarIsOpen={setSidebarIsOpen}
+            windowWidth={windowWidth}
+            setOpen={setOpen}
+          />
+        )}
       </div>
     </div>
   )

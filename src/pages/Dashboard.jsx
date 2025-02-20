@@ -22,7 +22,7 @@ export default function Dashboard({ open, setOpen }) {
 
   useEffect(() => {
     const checkIsMobile = () => {
-      const isMobile = window.innerWidth <= 425
+      const isMobile = window.innerWidth <= 768
       setIsMobile(isMobile)
       setViewMode(isMobile ? "card" : "table")
     }

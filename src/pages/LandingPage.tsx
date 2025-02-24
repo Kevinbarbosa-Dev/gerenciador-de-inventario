@@ -1,9 +1,6 @@
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
+import { Button } from "../components/ui/button";
+import { Card, CardContent, CardFooter, CardHeader } from "../components/ui/card";
 import { Link } from 'react-router-dom';
-import logo from '../assets/img/logo.png';
-import DashboardBlack from "../assets/img/dashboard-black.png";
-import DashboardWhite from "../assets/img/dashboard-white.png";
 
 export default function LandingPage() {
   return (
@@ -12,7 +9,7 @@ export default function LandingPage() {
         <nav className="flex items-center justify-between max-w-7xl mx-auto">
           <Link className="flex items-center space-x-2" to="/">
             <img
-              src={logo}
+              src="../assets/img/logo.png"
               alt="Stock Logo"
               width={100}
               height={40}
@@ -62,7 +59,7 @@ export default function LandingPage() {
             </div>
             <div className="flex items-center justify-center">
               <div className="w-full bg-[#202020] rounded-lg shadow-lg">
-                <img src={DashboardBlack} alt="Ilustração de Dashboard Preto" className="w-full h-full object-cover rounded-lg" />
+                <img src="/src/assets/img/dashboard-black.png" alt="Ilustração de Dashboard Preto" className="w-full h-full object-cover rounded-lg" />
               </div>
             </div>
           </div>
@@ -70,12 +67,12 @@ export default function LandingPage() {
         <section className="py-12 md:py-24 bg-[#E8EAED]">
           <div className="max-w-7xl mx-auto px-4 grid gap-12 lg:grid-cols-2">
             <div className="flex items-center justify-center">
-            <div className="w-full bg-[#202020] rounded-lg shadow-lg">
-              <img
-                src={DashboardWhite}
-                alt="Ilustração de Dashboard Branco"
-                className="object-cover w-full h-full rounded-lg"
-              />
+              <div className="w-full bg-[#202020] rounded-lg shadow-lg">
+                <img
+                  src="/src/assets/img/dashboard-white.png"
+                  alt="Ilustração de Dashboard Branco"
+                  className="object-cover w-full h-full rounded-lg"
+                />
               </div>
             </div>
             <div className="flex flex-col justify-center space-y-4">

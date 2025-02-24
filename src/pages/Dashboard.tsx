@@ -2,29 +2,36 @@
 
 import { useState, useMemo, useEffect } from "react"
 import Tabela from "../components/Tabela"
-import ModalAdd from "@/components/ModalAdd"
+import ModalAdd from "../components/ModalAdd"
 import RelatorioTabela from "../components/RelatorioTabela"
-import { DonutChart } from "@/components/DonutChart"
-import Mock from "@/components/Mock"
-import AdicionarBtnDesk from "@/components/AdicionarBtnDesk"
-import AlphabeticalSort from "@/components/AlphabeticalSort"
-import SearchComponent from "@/components/SearchComponent"
-import ModoTabelaOuLista from "@/components/ModoTabelaOuLista"
+import { DonutChart } from "../components/DonutChart"
+import Mock from "../components/Mock"
+import AdicionarBtnDesk from "../components/AdicionarBtnDesk"
+import AlphabeticalSort from "../components/AlphabeticalSort"
+import SearchComponent from "../components/SearchComponent"
+import ModoTabelaOuLista from "../components/ModoTabelaOuLista"
+import { InventarioItem } from "../type/InventarioItem"
 
 
-export default function Dashboard({ open, setOpen }) {
-  const [pesquisar, setPesquisar] = useState("")
-  const [inventorio, setInventorio] = useState(Mock)
-  const [isAlphabetical, setIsAlphabetical] = useState(false)
-  const [viewMode, setViewMode] = useState("table")
-  const [editingItem, setEditingItem] = useState(null)
-  const [isMobile, setIsMobile] = useState(false)
+
+interface DashboardProps {
+  open: boolean;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export default function Dashboard({ open, setOpen }: DashboardProps) {
+  const [pesquisar, setPesquisar] = useState<string>("")
+  const [inventorio, setInventorio] = useState<InventarioItem[]>(Mock)
+  const [isAlphabetical, setIsAlphabetical] = useState<boolean>(false)
+  const [viewMode, setViewMode] = useState<"table" | "card">("table")
+  const [editingItem, setEditingItem] = useState<InventarioItem | null>(null)
+  const [isMobile, setIsMobile] = useState<boolean>(false)
 
   useEffect(() => {
     const checkIsMobile = () => {
-      const isMobile = window.innerWidth <= 768
-      setIsMobile(isMobile)
-      setViewMode(isMobile ? "card" : "table")
+      const mobile = window.innerWidth <= 768
+      setIsMobile(mobile)
+      setViewMode(mobile ? "card" : "table")
     }
     checkIsMobile()
     window.addEventListener("resize", checkIsMobile)
@@ -49,11 +56,11 @@ export default function Dashboard({ open, setOpen }) {
     setIsAlphabetical(!isAlphabetical)
   }
 
-  const handleRemove = (id) => {
+  const handleRemove = (id: number) => {
     setInventorio((prevInventorio) => prevInventorio.filter((item) => item.id !== id))
   }
 
-  const handleAddItem = (newItem) => {
+  const handleAddItem = (newItem: InventarioItem) => {
     if (editingItem) {
       setInventorio((prevInventorio) =>
         prevInventorio.map((item) => (item.id === editingItem.id ? { ...item, ...newItem } : item)),
@@ -65,7 +72,7 @@ export default function Dashboard({ open, setOpen }) {
     setOpen(false)
   }
 
-  const handleEdit = (item) => {
+  const handleEdit = (item: InventarioItem) => {
     setEditingItem(item)
     setOpen(true)
   }

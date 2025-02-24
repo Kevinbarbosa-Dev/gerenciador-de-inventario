@@ -1,3 +1,5 @@
+
+
 const Mock = [
     {
         id: 1, nome: "Cadeira Gamer", material: "Couro Sintético", descricao: "Cadeira ergonômica para jogos e escritório", quantidade: 15,

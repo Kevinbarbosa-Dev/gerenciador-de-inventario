@@ -22,10 +22,10 @@ import BottomNav from "./components/BottomNav"
 import BtnOpen from "./components/BtnOpen"
 
 export default function Layout() {
-  const [sidebarIsOpen, setSidebarIsOpen] = useState(false)
-  const [mouseSobreSidebar, setMouseSobreSidebar] = useState(false)
+  const [sidebarIsOpen, setSidebarIsOpen] = useState<boolean>(false)
+  const [mouseSobreSidebar, setMouseSobreSidebar] = useState<boolean>(false)
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState<boolean>(false);
 
   const handleResize = useCallback(() => {
     setWindowWidth(window.innerWidth)
@@ -66,6 +66,7 @@ export default function Layout() {
             sidebarIsOpen={sidebarIsOpen}
             mouseDentro={() => setMouseSobreSidebar(true)}
             mouseFora={() => setMouseSobreSidebar(false)}
+            isMobile={isMobile}
           >
             <SideBarHeader>
               <div className="flex justify-center items-center gap-1">
@@ -102,9 +103,7 @@ export default function Layout() {
           </Routes>
         </main>
         {isMobile && (
-          <BottomNav
-            setOpen={setOpen}
-          />
+          <BottomNav setOpen={setOpen} />
         )}
       </div>
     </div >

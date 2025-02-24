@@ -1,4 +1,3 @@
-import React from 'react'
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from './components/ThemeProvider';
 import LandingPage from './pages/LandingPage';
@@ -26,16 +25,3 @@ export default function App() {
 
   )
 }
-
-
-/*
-import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
-
-
-export default function App() {
-  return (
-   
-  );
-}
-*/

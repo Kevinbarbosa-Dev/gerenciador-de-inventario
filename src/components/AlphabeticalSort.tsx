@@ -1,7 +1,12 @@
 import { SortAsc, SortDesc } from "lucide-react";
-import { Button } from "@/components/ui/button"
+import { Button } from "../components/ui/button"
 
-export default function AlphabeticaSort({ toggleSort, isAlphabetical }) {
+interface AlphabeticalSortProps {
+    toggleSort: () => void;
+    isAlphabetical: boolean;
+}
+
+export default function AlphabeticaSort({ toggleSort, isAlphabetical }: AlphabeticalSortProps) {
     return (
         <Button
             className="dark:bg-[#E8EAED] dark:border-[#303030] dark:text-[#202020]"

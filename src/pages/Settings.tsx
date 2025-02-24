@@ -1,25 +1,25 @@
 import { useState } from "react"
-import { Card, CardContent } from "@/components/ui/card"
-import { useTheme } from "@/components/ThemeProvider"
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
-import { useTranslation } from "@/components/settings/TranslationProvider"
-import ThemeOptions from "@/components/settings/ThemeOptions"
-import FontSize from "@/components/settings/FontSize"
-import Language from "@/components/settings/Language"
-import CoinOptions from "@/components/settings/CoinOptions"
-import Notification from "@/components/settings/Notification"
+import { Card, CardContent } from "../components/ui/card"
+import { useTheme } from "../components/ThemeProvider"
+import { ScrollArea, ScrollBar } from "../components/ui/scroll-area"
+import { useTranslation } from "../components/settings/TranslationProvider"
+import ThemeOptions from "../components/settings/ThemeOptions"
+import FontSize from "../components/settings/FontSize"
+import Language from "../components/settings/Language"
+import CoinOptions from "../components/settings/CoinOptions"
+import Notification from "../components/settings/Notification"
 
 
 export default function Settings() {
   const { setTheme } = useTheme();
-  const [fontSize, setFontSize] = useState("medium");
+  const [fontSize, setFontSize] = useState<string>("medium");
   const { t, setLanguage } = useTranslation();
 
-  const handleLanguageChange = (value) => {
+  const handleLanguageChange = (value: string) => {
     setLanguage(value)
     document.documentElement.lang = value;
   }
-  const handleFontSizeChange = (value) => {
+  const handleFontSizeChange = (value: string) => {
     setFontSize(value);
 
     const fontSizes = {
@@ -28,7 +28,7 @@ export default function Settings() {
       large: '18px'
     };
 
-    document.documentElement.style.fontSize = fontSizes[value] || '16px';
+    document.documentElement.style.fontSize = fontSizes[value as keyof typeof fontSizes];
   };
   return (
     <div className="flex h-screen w-full bg-gray-100  dark:bg-[#262626]">

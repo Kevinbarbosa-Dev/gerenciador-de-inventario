@@ -1,6 +1,12 @@
 import { HamburgerMenuIcon, DoubleArrowLeftIcon } from "@radix-ui/react-icons"
 
-export default function ToggleButton({ isOpen, onClick, size = 20 }) {
+interface ToggleButtonProps {
+    isOpen: boolean
+    onClick: () => void
+    size?: number
+}
+
+export default function ToggleButton({ isOpen, onClick, size = 20 }: ToggleButtonProps) {
     const Icon = isOpen ? DoubleArrowLeftIcon : HamburgerMenuIcon
 
     return (

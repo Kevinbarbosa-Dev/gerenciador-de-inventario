@@ -1,4 +1,3 @@
-import React, { useState } from 'react'
 import {
   Table,
   TableBody,
@@ -6,15 +5,24 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table"
-import { Button } from "@/components/ui/button"
+} from "./ui/table"
+import { Button } from "../components/ui/button"
 import { Trash2, Edit2 } from 'lucide-react'
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
+import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card"
+import { Badge } from "../components/ui/badge"
+import { ScrollArea, ScrollBar } from "../components/ui/scroll-area"
+import { useState } from 'react'
+import { InventarioItem } from "../type/InventarioItem"
 
-export default function Tabela({ filteredInventory, onRemove, onEdit, viewMode }) {
-  const [hoveredRow, setHoveredRow] = useState(null)
+interface TabelaProps {
+  filteredInventory: InventarioItem[]
+  onRemove: (id: number) => void
+  onEdit: (item: InventarioItem) => void
+  viewMode: "table" | "card"
+}
+
+export default function Tabela({ filteredInventory, onRemove, onEdit, viewMode }: TabelaProps) {
+  const [hoveredRow, setHoveredRow] = useState<number | null>(null)
 
   if (filteredInventory.length === 0) {
     return (
@@ -89,7 +97,7 @@ export default function Tabela({ filteredInventory, onRemove, onEdit, viewMode }
               <Card key={item.id} className="bg-gray-100 border-gray-300 dark:bg-[#202020] dark:border-[#303030]">
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                   <CardTitle className="text-sm font-medium">{item.nome}</CardTitle>
-                  <Badge variant="secondary">{item.quantidade} unidade{item.quantidade > 1 ? 's' : ''}</Badge>
+                  <Badge variant="secondary" className="ml-2">{item.quantidade} unidade{item.quantidade > 1 ? 's' : ''}</Badge>
                 </CardHeader>
                 <CardContent>
                   <div className="flex items-center space-x-4">

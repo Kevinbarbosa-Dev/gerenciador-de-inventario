@@ -2,6 +2,7 @@ import { Button } from "../components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader } from "../components/ui/card";
 import { Link } from 'react-router-dom';
 
+
 export default function LandingPage() {
   return (
     <div className="min-h-screen w-full bg-[#262626] text-white">
@@ -9,7 +10,7 @@ export default function LandingPage() {
         <nav className="flex items-center justify-between max-w-7xl mx-auto">
           <Link className="flex items-center space-x-2" to="/">
             <img
-              src="../assets/img/logo.png"
+              src="src/assets/img/logo.png"
               alt="Stock Logo"
               width={100}
               height={40}
@@ -59,7 +60,7 @@ export default function LandingPage() {
             </div>
             <div className="flex items-center justify-center">
               <div className="w-full bg-[#202020] rounded-lg shadow-lg">
-                <img src="/src/assets/img/dashboard-black.png" alt="Ilustração de Dashboard Preto" className="w-full h-full object-cover rounded-lg" />
+                <img src="src/assets/img/dashboard-black.png" alt="Ilustração de Dashboard Preto" className="w-full h-full object-cover rounded-lg" />
               </div>
             </div>
           </div>
@@ -69,7 +70,7 @@ export default function LandingPage() {
             <div className="flex items-center justify-center">
               <div className="w-full bg-[#202020] rounded-lg shadow-lg">
                 <img
-                  src="/src/assets/img/dashboard-white.png"
+                  src="src/assets/img/dashboard-white.png"
                   alt="Ilustração de Dashboard Branco"
                   className="object-cover w-full h-full rounded-lg"
                 />

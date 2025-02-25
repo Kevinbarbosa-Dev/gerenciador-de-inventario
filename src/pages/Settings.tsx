@@ -33,33 +33,37 @@ export default function Settings() {
   return (
     <div className="flex h-screen w-full bg-gray-100  dark:bg-[#262626]">
       <div className="flex-1">
+
         <div className="space-y-8 w-full lg-p-6">
-          <Card className="dark:bg-[#262626] dark:border-[#303030]">
-            <CardContent className="p-4 space-y-6">
-              <h2 className="text-lg font-semibold pb-2 border-b border-border">{t.appearance}</h2>
-              <div className="space-y-4">
-                <ThemeOptions t={t} setTheme={setTheme} />
-                <FontSize t={t} fontSize={fontSize} setFontSize={setFontSize} handleFontSizeChange={handleFontSizeChange} />
-              </div>
-            </CardContent>
-          </Card>
+          <ScrollArea className="h-[calc(100vh-120px)]">
+            <Card className="dark:bg-[#262626] dark:border-[#303030]">
+              <CardContent className="p-4 space-y-6">
+                <h2 className="text-lg font-semibold pb-2 border-b border-border">{t.appearance}</h2>
+                <div className="space-y-4">
+                  <ThemeOptions t={t} setTheme={setTheme} />
+                  <FontSize t={t} fontSize={fontSize} setFontSize={setFontSize} handleFontSizeChange={handleFontSizeChange} />
+                </div>
+              </CardContent>
+            </Card>
 
-          <Card className=" dark:bg-[#262626] dark:border-[#303030]">
-            <CardContent className="lg:p-6 p-4 space-y-6">
-              <h2 className="text-lg font-semibold pb-2 border-b border-border">{t.language}</h2>
-              <div className="space-y-4">
-                <Language t={t} handleLanguageChange={handleLanguageChange} />
-                <CoinOptions t={t} />
-              </div>
-            </CardContent>
-          </Card>
+            <Card className=" dark:bg-[#262626] dark:border-[#303030]">
+              <CardContent className="lg:p-6 p-4 space-y-6">
+                <h2 className="text-lg font-semibold pb-2 border-b border-border">{t.language}</h2>
+                <div className="space-y-4">
+                  <Language t={t} handleLanguageChange={handleLanguageChange} />
+                  <CoinOptions t={t} />
+                </div>
+              </CardContent>
+            </Card>
 
-          <Card className=" dark:bg-[#262626] dark:border-[#303030]">
-            <CardContent className="lg:p-6 p-4 space-y-6">
-              <h2 className="text-lg font-semibold pb-2 border-b border-border">{t.notification}</h2>
-              <Notification t={t} />
-            </CardContent>
-          </Card>
+            <Card className=" dark:bg-[#262626] dark:border-[#303030]">
+              <CardContent className="lg:p-6 p-4 space-y-6">
+                <h2 className="text-lg font-semibold pb-2 border-b border-border">{t.notification}</h2>
+                <Notification t={t} />
+              </CardContent>
+            </Card>
+            <ScrollBar className="bg-white/20 hover:bg-white/30" />
+          </ScrollArea>
         </div>
       </div>
     </div>

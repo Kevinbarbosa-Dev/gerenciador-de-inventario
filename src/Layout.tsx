@@ -21,7 +21,7 @@ import BtnClose from "./components/BtnClose"
 import BottomNav from "./components/BottomNav"
 import BtnOpen from "./components/BtnOpen"
 
-//TODO:o fundo do bottomNav esta aparecendo no quando a tela é maior que 768, solução = Remover
+//TODO: sumir com o bottomNav quando o setting estiver aberto
 
 export default function Layout() {
   const [sidebarIsOpen, setSidebarIsOpen] = useState<boolean>(false)
@@ -60,7 +60,7 @@ export default function Layout() {
           ${sidebarIsOpen && isMobile ? "opacity-100" : "opacity-0 pointer-events-none"}`}
           onClick={toggleSidebar}
         />
-        {!sidebarIsOpen && (
+        {!sidebarIsOpen && !isMobile && (
           <BtnOpen onClick={toggleSidebar} />
         )}
         {!isMobile && (

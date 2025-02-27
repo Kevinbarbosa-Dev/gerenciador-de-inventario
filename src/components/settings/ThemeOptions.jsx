@@ -1,4 +1,4 @@
-import { Label } from "@/components/ui/label";
+import { Label } from "@/components/ui/label.tsx";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Moon, Palette } from "lucide-react";
 export default function ThemeOptions({ t, setTheme }) {

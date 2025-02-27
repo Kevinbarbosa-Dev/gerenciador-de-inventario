@@ -3,7 +3,7 @@ export interface InventarioItem {
     nome: string;
     material: string;
     descricao: string;
-    fornecedor: string;
     quantidade: number;
     valor: number;
+    fornecedor: string;
 }

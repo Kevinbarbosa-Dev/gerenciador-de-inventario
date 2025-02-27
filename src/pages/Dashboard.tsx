@@ -8,9 +8,11 @@ import { DonutChart } from "../components/DonutChart"
 import Mock from "../components/Mock"
 import AdicionarBtnDesk from "../components/AdicionarBtnDesk"
 import AlphabeticalSort from "../components/AlphabeticalSort"
-import SearchComponent from "../components/SearchComponent"
+import SearchComponent from "../components/SearchComponent.tsx"
 import ModoTabelaOuLista from "../components/ModoTabelaOuLista"
 import { InventarioItem } from "../type/InventarioItem"
+import BottomNav from "../components/BottomNav"
+import { useIsMobile } from "../hooks/useIsMobile"
 
 
 
@@ -20,23 +22,17 @@ interface DashboardProps {
 }
 
 export default function Dashboard({ open, setOpen }: DashboardProps) {
+  const isMobile = useIsMobile()
   const [pesquisar, setPesquisar] = useState<string>("")
   const [inventorio, setInventorio] = useState<InventarioItem[]>(Mock)
   const [isAlphabetical, setIsAlphabetical] = useState<boolean>(false)
-  const [viewMode, setViewMode] = useState<"table" | "card">("table")
+  const [viewMode, setViewMode] = useState<"table" | "card" | "list">(isMobile ? "card" : "table")
   const [editingItem, setEditingItem] = useState<InventarioItem | null>(null)
-  const [isMobile, setIsMobile] = useState<boolean>(false)
 
   useEffect(() => {
-    const checkIsMobile = () => {
-      const mobile = window.innerWidth <= 768
-      setIsMobile(mobile)
-      setViewMode(mobile ? "card" : "table")
-    }
-    checkIsMobile()
-    window.addEventListener("resize", checkIsMobile)
-    return () => window.removeEventListener("resize", checkIsMobile)
-  }, [])
+    setViewMode(isMobile ? "card" : 'table')
+  }, [isMobile])
+
 
   const filteredInventory = useMemo(() => {
     let result = inventorio.filter(
@@ -139,6 +135,7 @@ export default function Dashboard({ open, setOpen }: DashboardProps) {
         suppliers={suppliers}
         editingItem={editingItem}
       />
+      {isMobile && <BottomNav setOpen={setOpen} />}
     </main>
   )
 }

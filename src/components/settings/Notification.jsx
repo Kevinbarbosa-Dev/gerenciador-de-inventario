@@ -1,5 +1,5 @@
 import { Bell } from "lucide-react";
-import { Label } from "@/components/ui/label";
+import { Label } from "@/components/ui/label.tsx";
 import { Switch } from "@/components/ui/switch";
 export default function Notification({ t }) {
     return (

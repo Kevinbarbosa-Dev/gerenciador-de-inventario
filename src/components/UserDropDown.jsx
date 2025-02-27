@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { ExitIcon, GearIcon, LightningBoltIcon, PersonIcon } from "@radix-ui/react-icons";
+import { ExitIcon, LightningBoltIcon, PersonIcon } from "@radix-ui/react-icons";
 import { dropdownItemClasses } from '@/assets/styles/tailwind/dropdownItemClasses';
 import '../assets/styles/Sidebar/sidebar.css'
 import BtnSetaBaixa from './BtnSetaBaixa';

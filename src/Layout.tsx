@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import { useState, useLayoutEffect, useCallback } from "react"
-import { Route, Routes } from "react-router-dom"
+import { useState, useLayoutEffect, useCallback } from "react";
+import { Route, Routes } from "react-router-dom";
 import {
   SideBar,
   SideBarHeader,
@@ -11,58 +11,56 @@ import {
   SideBarNavLink,
   SideBarFooter,
   SideBarFooterLink,
-} from "./components/SideBar"
-import Dashboard from "./pages/Dashboard"
-import Settings from "./pages/Settings"
-import "../src/assets/styles/App.css"
-import { DashboardIcon, GearIcon } from "@radix-ui/react-icons"
-import UserDropDown from "./components/UserDropDown"
-import BtnClose from "./components/BtnClose"
-import BottomNav from "./components/BottomNav"
-import BtnOpen from "./components/BtnOpen"
-
-//TODO: sumir com o bottomNav quando o setting estiver aberto
+} from "./components/SideBar";
+import Dashboard from "./pages/Dashboard";
+import Settings from "./pages/Settings";
+import "../src/assets/styles/App.css";
+import { DashboardIcon, GearIcon } from "@radix-ui/react-icons";
+import UserDropDown from "./components/UserDropDown";
+import { useIsMobile } from "./hooks/useIsMobile";
+import ToggleButton from "./hooks/ToggleButton";
 
 export default function Layout() {
-  const [sidebarIsOpen, setSidebarIsOpen] = useState<boolean>(false)
-  const [mouseSobreSidebar, setMouseSobreSidebar] = useState<boolean>(false)
+  const [sidebarIsOpen, setSidebarIsOpen] = useState<boolean>(false);
+  const [mouseSobreSidebar, setMouseSobreSidebar] = useState<boolean>(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [open, setOpen] = useState<boolean>(false);
 
   const handleResize = useCallback(() => {
-    setWindowWidth(window.innerWidth)
-  }, [])
+    setWindowWidth(window.innerWidth);
+  }, []);
 
   useLayoutEffect(() => {
     if (windowWidth > 768) {
-      setSidebarIsOpen(true)
+      setSidebarIsOpen(true);
     } else {
-      setSidebarIsOpen(false)
+      setSidebarIsOpen(false);
     }
-    window.addEventListener("resize", handleResize)
+    window.addEventListener("resize", handleResize);
     return () => {
-      window.removeEventListener("resize", handleResize)
-    }
-  }, [windowWidth, handleResize])
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [windowWidth, handleResize]);
   const toggleSidebar = () => {
     setSidebarIsOpen(!sidebarIsOpen);
   };
-  const isMobile = windowWidth <= 768
+  const isMobile = useIsMobile()
 
   return (
     <div className="bg-gray-100 dark:bg-[#262626] min-h-screen">
       <div
         className={`app-container 
-      ${sidebarIsOpen ? "" : "app-container-sidebar-closed"}`}>
-
+      ${sidebarIsOpen ? "" : "app-container-sidebar-closed"}`}
+      >
         <div
           className={`fixed inset-0 bg-black bg-opacity-50 z-40 transition-opacity 
           ${sidebarIsOpen && isMobile ? "opacity-100" : "opacity-0 pointer-events-none"}`}
           onClick={toggleSidebar}
         />
-        {!sidebarIsOpen && !isMobile && (
-          <BtnOpen onClick={toggleSidebar} />
-        )}
+        {!sidebarIsOpen && !isMobile &&
+          <ToggleButton
+            isOpen={sidebarIsOpen}
+            onClick={toggleSidebar} />}
         {!isMobile && (
           <SideBar
             sidebarIsOpen={sidebarIsOpen}
@@ -74,7 +72,13 @@ export default function Layout() {
               <div className="flex justify-center items-center gap-1">
                 <UserDropDown mouseSobreSidebar={mouseSobreSidebar} />
               </div>
-              <BtnClose onClick={toggleSidebar} mouseSobreSidebar={mouseSobreSidebar} />
+              <ToggleButton
+                isOpen={sidebarIsOpen}
+                onClick={toggleSidebar}
+                size={20}
+                mouseSobreSidebar={mouseSobreSidebar}
+              />
+
             </SideBarHeader>
             <SideBarMain>
               <SideBarNav>
@@ -90,7 +94,8 @@ export default function Layout() {
             </SideBarMain>
             <SideBarFooter>
               <SideBarFooterLink to="/">
-                <img src="./src/assets/img/favicon-32x32.png" alt="Logo" /> Stock
+                <img src="./src/assets/img/favicon-32x32.png" alt="Logo" />{" "}
+                Stock
               </SideBarFooterLink>
             </SideBarFooter>
           </SideBar>
@@ -100,14 +105,14 @@ export default function Layout() {
             ${sidebarIsOpen && !isMobile ? "" : "w-full"}`}
         >
           <Routes>
-            <Route path="dashboard" element={<Dashboard open={open} setOpen={setOpen} />} />
+            <Route
+              path="dashboard"
+              element={<Dashboard open={open} setOpen={setOpen} />}
+            />
             <Route path="settings" element={<Settings />} />
           </Routes>
         </main>
-        {isMobile && (
-          <BottomNav setOpen={setOpen} />
-        )}
       </div>
-    </div >
-  )
+    </div>
+  );
 }

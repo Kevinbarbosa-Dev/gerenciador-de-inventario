@@ -18,7 +18,7 @@ interface TabelaProps {
   filteredInventory: InventarioItem[]
   onRemove: (id: number) => void
   onEdit: (item: InventarioItem) => void
-  viewMode: "table" | "card"
+  viewMode: "table" | "card" | "list"
 }
 
 export default function Tabela({ filteredInventory, onRemove, onEdit, viewMode }: TabelaProps) {

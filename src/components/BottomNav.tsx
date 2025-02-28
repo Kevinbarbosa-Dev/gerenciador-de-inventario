@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 interface BottomNavProps {
     setOpen: (isOpen: boolean) => void
 }
-// TODO: se eu estiver na tela de configurações e apertar o botão de adicionar, a tela muda para home e o modal aparece
+
 // TODO: no mobile faça com que quando eu mudar para o dashboard, tenha um tempo de pause que servi-ra para carregar a tabela e modifica-la para card, quando acabar a tela aparece
 
 export default function BottomNav({ setOpen }: BottomNavProps) {

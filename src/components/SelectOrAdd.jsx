@@ -1,8 +1,8 @@
 // components/DynamicSelect.js
-import { Input } from '../components/ui/input';
-import React, { useState } from 'react';
+import { Input } from './ui/input';
+import { useState } from 'react';
 
-export default function SelectOrAdd({ label, options, value, onChange}) {
+export default function SelectOrAdd({ label, options, value, onChange }) {
     const [inputValue, setInputValue] = useState('');
     const [showInput, setShowInput] = useState(false);
 

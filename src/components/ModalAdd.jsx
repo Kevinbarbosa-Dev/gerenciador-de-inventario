@@ -1,4 +1,3 @@
-import React from "react"
 import {
   Dialog,
   DialogContent,
@@ -6,10 +5,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog"
 import InputAdd from "./InputAdd"
-
-
-
-export default function ModalAdd({open, onOpenChange, onAddItem, materiais,suppliers, editingItem}) {
+export default function ModalAdd({ open, onOpenChange, onAddItem, materiais, suppliers, editingItem }) {
 
   const handleSubmit = (newItem) => {
     onAddItem(newItem)
@@ -21,12 +17,12 @@ export default function ModalAdd({open, onOpenChange, onAddItem, materiais,suppl
         <DialogHeader>
           <DialogTitle>{editingItem ? 'Editar produto' : 'Adicione um novo produto'}</DialogTitle>
         </DialogHeader>
-        <InputAdd 
-        onSubmit={handleSubmit} 
-        onCancel={() => onOpenChange(false)} 
-        materiais={materiais} 
-        suppliers={suppliers}
-        initialData={editingItem}
+        <InputAdd
+          onSubmit={handleSubmit}
+          onCancel={() => onOpenChange(false)}
+          materiais={materiais}
+          suppliers={suppliers}
+          initialData={editingItem}
         />
       </DialogContent>
     </Dialog>

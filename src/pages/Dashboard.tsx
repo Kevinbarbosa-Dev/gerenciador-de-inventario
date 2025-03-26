@@ -26,7 +26,7 @@ export default function Dashboard({ open, setOpen }: DashboardProps) {
   const [pesquisar, setPesquisar] = useState<string>("")
   const [inventorio, setInventorio] = useState<InventarioItem[]>(Mock)
   const [isAlphabetical, setIsAlphabetical] = useState<boolean>(false)
-  const [viewMode, setViewMode] = useState<"table" | "card" | "list">(isMobile ? "card" : "table")
+  const [viewMode, setViewMode] = useState<"table" | "card">(isMobile ? "card" : "table")
   const [editingItem, setEditingItem] = useState<InventarioItem | null>(null)
 
   useEffect(() => {
@@ -73,6 +73,10 @@ export default function Dashboard({ open, setOpen }: DashboardProps) {
     setOpen(true)
   }
 
+  const resetModal = () => {
+    setEditingItem(null)
+  }
+
   const totalItems = inventorio.reduce((sum, item) => sum + item.quantidade, 0)
   const totalValue = inventorio.reduce((sum, item) => sum + item.valor, 0)
   const materiais = [...new Set(inventorio.map((item) => item.material))]
@@ -106,7 +110,7 @@ export default function Dashboard({ open, setOpen }: DashboardProps) {
         </>
       ) : (
         <div className="flex gap-2 justify-between p-2 bg-gray-100 dark:bg-[#262626]">
-          <AdicionarBtnDesk setOpen={setOpen} />
+          <AdicionarBtnDesk setOpen={setOpen} setEditingItem={setEditingItem} />
           <ModalAdd
             open={open}
             onOpenChange={setOpen}
@@ -114,6 +118,7 @@ export default function Dashboard({ open, setOpen }: DashboardProps) {
             materiais={materiais}
             suppliers={suppliers}
             editingItem={editingItem}
+            reset={resetModal}
           />
           <div className="flex gap-2">
             <AlphabeticalSort toggleSort={toggleSort} isAlphabetical={isAlphabetical} />
@@ -134,6 +139,7 @@ export default function Dashboard({ open, setOpen }: DashboardProps) {
         materiais={materiais}
         suppliers={suppliers}
         editingItem={editingItem}
+        reset={resetModal}
       />
       {isMobile && <BottomNav setOpen={setOpen} />}
     </main>

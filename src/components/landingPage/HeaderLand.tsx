@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { btnLogAndSign, headerLinks } from "../../assets/styles/tailwind/landPageStyle";
 
 export default function HeaderLand() {
     return (
@@ -14,27 +15,27 @@ export default function HeaderLand() {
                     />
                 </Link>
                 <div className="hidden space-x-6 md:flex">
-                    <Link className="text-sm font-medium text-white hover:text-[#9AA0A6]" to="#">
+                    <Link className={headerLinks} to="#">
                         Home
                     </Link>
-                    <Link className="text-sm font-medium text-white hover:text-[#9AA0A6]" to="#">
+                    <Link className={headerLinks} to="#">
                         Funcionalidades
                     </Link>
-                    <Link className="text-sm font-medium text-white hover:text-[#9AA0A6]" to="#">
+                    <Link className={headerLinks} to="#">
                         Planos e Preços
                     </Link>
-                    <Link className="text-sm font-medium text-white hover:text-[#9AA0A6]" to="#">
+                    <Link className={headerLinks} to="#">
                         Sobre
                     </Link>
                 </div>
                 <div className="flex items-center space-x-4">
                     <Link
-                        className="text-[#E8EAED] p-4 font-normal text-[17px] leading-[20px] hover:cursor-pointer hover:text-[#D90718] transition-colors duration-300"
+                        className={`${btnLogAndSign} hover:text-[#D90718]`}
                         to="/Login"
                     >
                         Entrar
                     </Link>
-                    <Link className="bg-[#D90718] text-[#E8EAED] border-0 p-4 rounded-[10px] font-normal text-[17px] leading-[20px] hover:cursor-pointer hover:text-[#202020] hover:bg-[#E8EAED] transition-colors duration-300" to="/Cadastrar">
+                    <Link className={`${btnLogAndSign} bg-[#D90718] border-0 rounded-[10px] hover:text-[#202020] hover:bg-[#E8EAED]`} to="/Cadastrar">
                         Cadastrar
                     </Link>
                 </div>

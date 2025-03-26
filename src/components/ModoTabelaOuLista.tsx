@@ -2,8 +2,8 @@ import { LayoutGrid, LayoutList } from "lucide-react";
 import { Button } from "../components/ui/button"
 import { useIsMobile } from "../hooks/useIsMobile";
 interface ModoTabelaOuListaProps {
-    viewMode: "table" | "card" | "list",
-    setViewMode: (value: "table" | "card" | "list") => void
+    viewMode: "table" | "card",
+    setViewMode: (value: "table" | "card") => void
 }
 export default function ModoTabelaOuLista({ viewMode, setViewMode }: ModoTabelaOuListaProps) {
     const isMobile = useIsMobile()
@@ -12,7 +12,7 @@ export default function ModoTabelaOuLista({ viewMode, setViewMode }: ModoTabelaO
         if (isMobile) {
             setViewMode(viewMode === "card" ? "table" : "card");
         } else {
-            setViewMode(viewMode === "table" ? "list" : "table")
+            setViewMode(viewMode === "table" ? "card" : "table")
         }
     }
     return (
@@ -25,7 +25,7 @@ export default function ModoTabelaOuLista({ viewMode, setViewMode }: ModoTabelaO
             ) : (
                 <LayoutGrid className="mr-2 h-4 w-4 dark:text-[#202020]" />
             )}
-            {viewMode === "table" ? "Lista" : "Tabela"}
+            {viewMode === "table" ? "Cartão" : "Tabela"}
         </Button>
     )
 }

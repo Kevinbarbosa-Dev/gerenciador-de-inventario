@@ -11,12 +11,18 @@ import {
   inputStyle,
   submitButton,
   formFooter,
-  formQuestion
+  formQuestion,
+  visitanteBtn
 } from '../assets/styles/tailwind/logAndSign';
 
+import { Loader2 } from 'lucide-react';
+import { useLoading } from '../hooks/useLoading';
+
 export default function Login() {
+  const { isLoading, handleLoading } = useLoading(2000);
+
   return (
-    <body className='bg-[#E8EAED]'>
+    <div className='bg-[#E8EAED]'>
       <div className={loginScreen}>
         <div className={`${formContainer}`}>
           <div className={`${formHeader}`}>
@@ -27,13 +33,21 @@ export default function Login() {
             <input type="password" placeholder="Senha" required className={inputStyle} />
             <button type="submit" className={submitButton}>Entrar</button>
           </form>
-          <Button className="w-full shadow-md bg-transparent hover:bg-transparent text-black font-bold mt-2">
-            <Link
-              to="/app/dashboard"
-            >
-              Acessar como Visitante
-            </Link>
-          </Button>
+          <Link
+            to="/app/dashboard"
+            onClick={() => handleLoading()}
+          >
+            <Button className={visitanteBtn} disabled={isLoading}>
+              {isLoading ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Carregando...
+                </>
+              ) : (
+                "Acessar como Visitante"
+              )}
+            </Button>
+          </Link>
           <div className={formFooter}>
             <span className={formQuestion}>Não tem cadastro?</span>
             <Link to="/Cadastrar" style={{ textDecoration: 'none' }}>
@@ -42,6 +56,6 @@ export default function Login() {
           </div>
         </div>
       </div>
-    </body>
+    </div>
   )
 }

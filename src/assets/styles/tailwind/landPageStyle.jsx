@@ -1,0 +1,10 @@
+export const headerLinks = "text-sm font-medium text-white hover:text-[#9AA0A6]";
+export const btnLogAndSign = "text-[#E8EAED] p-4 font-normal text-[17px] leading-[20px] hover:cursor-pointer transition-colors duration-300";
+export const sessao = "py-12 md:py-24";
+export const containerContent = "max-w-7xl mx-auto px-4 grid gap-12 lg:grid-cols-2";
+export const imgContainerFather = "flex items-center justify-center"
+export const imgContainerChild = "w-full rounded-lg shadow-lg"
+export const imgStyle = "w-full h-full object-cover rounded-lg";
+export const infoContainer = "flex flex-col justify-center space-y-4"
+export const h4Style = "text-lg font-bold";
+export const pStyle = "mt-2 text-sm text-[#9AA0A6]"

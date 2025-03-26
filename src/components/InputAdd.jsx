@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import SelectOrAdd from "./SelectOrAdd";
 
+/*************  ✨ Codeium Command 🌟  *************/
 export default function InputAdd({ onSubmit, onCancel, materiais, suppliers, initialData }) {
     const [formData, setFormData] = useState({
         id: "",
@@ -22,17 +23,31 @@ export default function InputAdd({ onSubmit, onCancel, materiais, suppliers, ini
     }, [initialData]);
 
     const handleChange = (id, value) => {
+        if (value === undefined || value === null) {
+            return;
+        }
         setFormData((prevData) => ({ ...prevData, [id]: value }));
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        if (!formData.id || !formData.nome || !formData.material || !formData.quantidade || !formData.valor || !formData.fornecedor) {
+            alert("Preencha todos os campos!");
+            return;
+        }
         const convertedData = {
             ...formData,
             quantidade: Number(formData.quantidade),
             valor: parseFloat(formData.valor),
         };
         onSubmit(convertedData);
+    };
+
+    const reset = () => {
+        if (initialData) {
+            setFormData(initialData);
+        }
+        setFormData(initialData);
     };
 
     return (
@@ -113,4 +128,5 @@ export default function InputAdd({ onSubmit, onCancel, materiais, suppliers, ini
         </form>
     );
 }
+
 

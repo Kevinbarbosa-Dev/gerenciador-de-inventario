@@ -6,20 +6,14 @@ import {
   TableHeader,
   TableRow,
 } from "./ui/table"
-import { Button } from "../components/ui/button"
-import { Trash2, Edit2 } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card"
 import { Badge } from "../components/ui/badge"
-import { ScrollArea, ScrollBar } from "../components/ui/scroll-area"
 import { useState } from 'react'
-import { InventarioItem } from "../type/InventarioItem"
+import DropDownOptions from "./DropDownOptions"
+import BtnRemove from "./BtnRemove"
+import BtnEdit from "./BtnEdit"
+import { TabelaProps } from "../type/TabelaProps"
 
-interface TabelaProps {
-  filteredInventory: InventarioItem[]
-  onRemove: (id: number) => void
-  onEdit: (item: InventarioItem) => void
-  viewMode: "table" | "card" | "list"
-}
 
 export default function Tabela({ filteredInventory, onRemove, onEdit, viewMode }: TabelaProps) {
   const [hoveredRow, setHoveredRow] = useState<number | null>(null)
@@ -64,22 +58,8 @@ export default function Tabela({ filteredInventory, onRemove, onEdit, viewMode }
                 <TableCell>
                   {hoveredRow === item.id && (
                     <div className="flex gap-2 float-right">
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        onClick={() => onEdit(item)}
-                        className="shadow-md hover:shadow-lg transition-shadow h-4 w-4"
-                      >
-                        <Edit2 />
-                      </Button>
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        onClick={() => onRemove(item.id)}
-                        className="shadow-md hover:shadow-lg transition-shadow h-4 w-4"
-                      >
-                        <Trash2 />
-                      </Button>
+                      <BtnEdit item={item} onEdit={onEdit} className="hover:text-black text-white" />
+                      <BtnRemove onRemove={onRemove} id={item.id} className="hover:text-black text-white" />
                     </div>
                   )}
                 </TableCell>
@@ -93,7 +73,12 @@ export default function Tabela({ filteredInventory, onRemove, onEdit, viewMode }
             <Card key={item.id} className="bg-gray-100 border-gray-300 dark:bg-[#202020] dark:border-[#303030]">
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">{item.nome}</CardTitle>
-                <Badge variant="secondary" className="ml-2">{item.quantidade} unidade{item.quantidade > 1 ? 's' : ''}</Badge>
+                <div className="flex justify-end items-center gap-2">
+                  <Badge variant="secondary" className="ml-2">{item.quantidade} unidade{item.quantidade > 1 ? 's' : ''}</Badge>
+
+                  <DropDownOptions item={item} onEdit={onEdit} onRemove={onRemove} />
+
+                </div>
               </CardHeader>
               <CardContent>
                 <div className="flex items-center space-x-4">

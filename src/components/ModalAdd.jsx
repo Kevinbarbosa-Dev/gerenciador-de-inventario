@@ -5,12 +5,19 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog"
 import InputAdd from "./InputAdd"
-export default function ModalAdd({ open, onOpenChange, onAddItem, materiais, suppliers, editingItem }) {
+export default function ModalAdd({ open, onOpenChange, onAddItem, materiais, suppliers, editingItem, reset }) {
 
   const handleSubmit = (newItem) => {
     onAddItem(newItem)
     onOpenChange(false)
   }
+
+  const handleClose = () => {
+    reset();
+    onOpenChange(false);
+  };
+
+
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[425px] dark:bg-[#202020]">
@@ -19,7 +26,7 @@ export default function ModalAdd({ open, onOpenChange, onAddItem, materiais, sup
         </DialogHeader>
         <InputAdd
           onSubmit={handleSubmit}
-          onCancel={() => onOpenChange(false)}
+          onCancel={handleClose}
           materiais={materiais}
           suppliers={suppliers}
           initialData={editingItem}

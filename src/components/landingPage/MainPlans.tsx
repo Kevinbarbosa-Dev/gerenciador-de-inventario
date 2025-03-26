@@ -1,5 +1,10 @@
 import { Card, CardContent, CardFooter, CardHeader } from "../ui/card";
 import { Button } from "../ui/button";
+const plans = [
+    { price: "$7.99", storage: "100GB", title: "Básico" },
+    { price: "$9.99", storage: "500GB", title: "Padrão", featured: true },
+    { price: "$11.99", storage: "1TB", title: "Premium" }
+]
 export default function MainPlans() {
     return (
         <>
@@ -7,7 +12,7 @@ export default function MainPlans() {
                 <div className="max-w-7xl mx-auto px-4">
                     <h2 className="text-3xl font-bold text-center mb-12">Nossos Planos</h2>
                     <div className="grid gap-6 md:grid-cols-3">
-                        {[{ price: "$7.99", title: "Básico" }, { price: "$9.99", title: "Padrão", featured: true }, { price: "$11.99", title: "Premium" }].map((plan, index) => (
+                        {plans.map((plan, index) => (
                             <Card
                                 key={index}
                                 className={`flex flex-col ${plan.featured ? "border-2 border-[#D90718] bg-[#202020]" : "border-[#E5E7EB] bg-[#262626]"
@@ -22,7 +27,7 @@ export default function MainPlans() {
                                         <span className="text-base font-normal text-[#9AA0A6]">/mês</span>
                                     </div>
                                     <p className="mt-2 text-sm text-[#9AA0A6]">
-                                        5000 de armazenamento com recursos particulares
+                                        {plan.storage} de armazenamento com recursos particulares
                                     </p>
                                 </CardContent>
                                 <CardFooter>

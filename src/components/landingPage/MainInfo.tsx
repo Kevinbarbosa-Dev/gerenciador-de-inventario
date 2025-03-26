@@ -9,7 +9,6 @@ import {
 import { Button } from "../ui/button";
 import { Link } from 'react-router-dom';
 import { Package, ShoppingCart, Truck, BarChart } from "lucide-react"
-import { useEffect, useState } from "react";
 import { ImageSkeleton } from "../imagemSkaleton";
 import { useLoading } from "../../hooks/useLoading";
 
@@ -41,7 +40,7 @@ export default function MainInfo() {
                     </div>
                     <div className={imgContainerFather}>
                         <div className={imgContainerChild}>
-                            {isLoading ? <ImageSkeleton /> : <img src="src/assets/img/dashboard-black.png" alt="Ilustração de Dashboard Preto" className={imgStyle} />}
+                            {isLoading ? <ImageSkeleton /> : <img src="./imagem/dashboard-black.png" alt="Ilustração de Dashboard Preto" className={imgStyle} />}
                         </div>
                     </div>
 
@@ -51,7 +50,7 @@ export default function MainInfo() {
                 <div className={containerContent}>
                     <div className={imgContainerFather}>
                         <div className={imgContainerChild}>
-                            {isLoading ? <ImageSkeleton /> : <img src="src/assets/img/dashboard-white.png" alt="Ilustração de Dashboard Branco" className={imgStyle} />}
+                            {isLoading ? <ImageSkeleton /> : <img src="./imagem/dashboard-white.png" alt="Ilustração de Dashboard Branco" className={imgStyle} />}
                         </div>
                     </div>
                     <div className={`${infoContainer} w-full`}>

@@ -7,7 +7,7 @@ export default function HeaderLand() {
             <nav className="flex items-center justify-between max-w-7xl mx-auto">
                 <Link className="flex items-center space-x-2" to="/">
                     <img
-                        src="src/assets/img/logo.png"
+                        src="./imagem/logo.png"
                         alt="Stock Logo"
                         width={100}
                         height={40}

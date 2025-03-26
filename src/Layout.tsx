@@ -20,6 +20,7 @@ import UserDropDown from "./components/UserDropDown";
 import { useIsMobile } from "./hooks/useIsMobile";
 import ToggleButton from "./hooks/ToggleButton";
 
+
 export default function Layout() {
   const [sidebarIsOpen, setSidebarIsOpen] = useState<boolean>(false);
   const [mouseSobreSidebar, setMouseSobreSidebar] = useState<boolean>(false);
@@ -94,7 +95,7 @@ export default function Layout() {
             </SideBarMain>
             <SideBarFooter>
               <SideBarFooterLink to="/">
-                <img src="./src/assets/img/favicon-32x32.png" alt="Logo" />{" "}
+                <img src="./imagem/favicon-32x32.png" alt="Logo" />
                 Stock
               </SideBarFooterLink>
             </SideBarFooter>

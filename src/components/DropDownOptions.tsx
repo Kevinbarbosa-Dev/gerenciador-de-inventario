@@ -32,7 +32,7 @@ export default function DropDownOptions({ size = 20, item, onEdit, onRemove }: D
             <div className={`absolute top-full right-0 w-36 bg-white shadow-lg rounded-md overflow-hidden transition-all duration-300 ease-in-out transform ${isOpen ? 'opacity-100 visible scale-100 translate-y-2 gap-2 pl-6 ' : 'opacity-0 scale-95 invisible translate-y-0'}`}>
                 <div className="flex flex-col gap-2 p-2">
                     <BtnEdit item={item} onEdit={onEdit} className=' bg-black' >Editar</BtnEdit>
-                    <BtnRemove onRemove={onRemove} id={item.id} className=' bg-black' >Remover</BtnRemove>
+                    <BtnRemove onRemove={onRemove} id={item.id ?? 0} className=' bg-black' >Remover</BtnRemove>
                 </div>
             </div>
         </div>

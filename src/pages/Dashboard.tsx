@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useMemo, useEffect } from "react"
+import { useState, useEffect } from "react"
 import Tabela from "../components/Tabela"
 import ModalAdd from "../components/ModalAdd"
 import RelatorioTabela from "../components/RelatorioTabela"
@@ -13,6 +13,8 @@ import ModoTabelaOuLista from "../components/ModoTabelaOuLista"
 import { InventarioItem } from "../type/InventarioItem"
 import BottomNav from "../components/BottomNav"
 import { useIsMobile } from "../hooks/useIsMobile"
+import useFilteredInventarory from "../hooks/useFilteredInventarory.tsx"
+import BtnBackToTop from "../components/BtnBackToTop.tsx"
 
 
 
@@ -34,19 +36,7 @@ export default function Dashboard({ open, setOpen }: DashboardProps) {
   }, [isMobile])
 
 
-  const filteredInventory = useMemo(() => {
-    let result = inventorio.filter(
-      (item) =>
-        item.nome.toLowerCase().includes(pesquisar.toLowerCase()) ||
-        item.material.toLowerCase().includes(pesquisar.toLowerCase()),
-    )
-
-    if (isAlphabetical) {
-      result = [...result].sort((a, b) => a.nome.localeCompare(b.nome))
-    }
-
-    return result
-  }, [inventorio, pesquisar, isAlphabetical])
+  const filteredInventory = useFilteredInventarory({ inventorio, pesquisar, isAlphabetical })
 
   const toggleSort = () => {
     setIsAlphabetical(!isAlphabetical)
@@ -84,7 +74,7 @@ export default function Dashboard({ open, setOpen }: DashboardProps) {
 
   return (
     <main
-      className={`w-full max-w-[1200px] h-screen ${isMobile ? "grid grid-rows-[auto_auto_1fr]" : "grid md:grid-rows-[50%_8%_42%]"}`}
+      className={`w-full h-screen ${isMobile ? "grid grid-rows-[auto_auto_1fr]" : "grid md:grid-rows-[50%_8%_42%]"}`}
     >
       {!isMobile && (
         <div className="hidden md:flex shadow-[0_0_2px_rgba(0,0,0,0.1)] w-full items-center justify-center transition-all duration-500 border-b-[1px] bg-gray-100 border-gray-300 dark:border-[#303030] dark:bg-[#262626]">
@@ -141,7 +131,12 @@ export default function Dashboard({ open, setOpen }: DashboardProps) {
         editingItem={editingItem}
         reset={resetModal}
       />
-      {isMobile && <BottomNav setOpen={setOpen} />}
+      {isMobile && (
+        <div className="flex flex-col">
+          <BtnBackToTop />
+          <BottomNav setOpen={setOpen} />
+        </div>
+      )}
     </main>
   )
 }

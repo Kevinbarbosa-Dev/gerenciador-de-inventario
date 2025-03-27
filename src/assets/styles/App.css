@@ -16,10 +16,23 @@ body {
   transition: margin-left 0.3s ease;
 
   &.app-container-sidebar-closed {
+    grid-template-columns: 4rem 1fr;
+    transition: all 0.3s ease;
+  }
+}
+
+/* Estilos para mobile permanecem inalterados */
+@media (max-width: 768px) {
+  .app-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: all 0.3s ease;
+  }
+
+  .app-container-sidebar-closed {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 

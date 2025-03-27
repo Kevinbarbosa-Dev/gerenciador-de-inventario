@@ -3,7 +3,7 @@ import { btnLogAndSign, headerLinks } from "../../assets/styles/tailwind/landPag
 
 export default function HeaderLand() {
     return (
-        <header className="sticky top-0 z-50 bg-[#262626] sm:py-2 py-4 px-4 bg-opacity-80 backdrop-blur" >
+        <header className="sticky top-0 z-50 bg-[#262626] max-sm:py-2 py-4 px-4 bg-opacity-80 backdrop-blur" >
             <nav className="flex items-center justify-between max-w-7xl mx-auto">
                 <Link className="flex items-center space-x-2" to="/">
                     <img

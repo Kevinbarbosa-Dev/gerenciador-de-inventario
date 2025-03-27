@@ -1,5 +1,5 @@
 export const headerLinks = "text-sm font-medium text-white hover:text-[#9AA0A6]";
-export const btnLogAndSign = "text-[#E8EAED] p-4 font-normal text-[17px] leading-[20px] hover:cursor-pointer transition-colors duration-300";
+export const btnLogAndSign = "text-[#E8EAED] p-4 font-normal text-[17px] max-sm:text-[14px] leading-[20px] hover:cursor-pointer transition-colors duration-300";
 export const sessao = "py-12 md:py-24";
 export const containerContent = "max-w-7xl mx-auto px-4 grid gap-12 lg:grid-cols-2";
 export const imgContainerFather = "flex items-center justify-center"

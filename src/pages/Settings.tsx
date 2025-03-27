@@ -9,6 +9,7 @@ import CoinOptions from "../components/settings/CoinOptions"
 import Notification from "../components/settings/Notification"
 import BtnBack from "../components/BtnBack"
 import { useIsMobile } from "../hooks/useIsMobile"
+import { cardContainer, cardContent, cardTitle, containerOptions } from "../assets/styles/tailwind/settingsStyle"
 
 
 export default function Settings() {
@@ -42,10 +43,10 @@ export default function Settings() {
             <BtnBack to={"/app/dashboard"} />
           )}
           <div className="space-y-8">
-            <Card className="dark:bg-[#262626] dark:border-[#303030]">
-              <CardContent className="p-4 space-y-6">
-                <h2 className="text-lg font-semibold pb-2 border-b border-border">{t.appearance}</h2>
-                <div className="space-y-4">
+            <Card className={cardContainer}>
+              <CardContent className={cardContent}>
+                <h2 className={cardTitle}>{t.appearance}</h2>
+                <div className={containerOptions}>
                   <ThemeOptions t={t} setTheme={setTheme} />
                   <FontSize
                     t={t}
@@ -57,19 +58,19 @@ export default function Settings() {
               </CardContent>
             </Card>
 
-            <Card className="dark:bg-[#262626] dark:border-[#303030]">
-              <CardContent className="lg:p-6 p-4 space-y-6">
-                <h2 className="text-lg font-semibold pb-2 border-b border-border">{t.language}</h2>
-                <div className="space-y-4">
+            <Card className={cardContainer}>
+              <CardContent className={cardContent}>
+                <h2 className={cardTitle}>{t.language}</h2>
+                <div className={containerOptions}>
                   <Language t={t} handleLanguageChange={handleLanguageChange} />
                   <CoinOptions t={t} />
                 </div>
               </CardContent>
             </Card>
 
-            <Card className="dark:bg-[#262626] dark:border-[#303030]">
-              <CardContent className="lg:p-6 p-4 space-y-6">
-                <h2 className="text-lg font-semibold pb-2 border-b border-border">{t.notification}</h2>
+            <Card className={cardContainer}>
+              <CardContent className={cardContent}>
+                <h2 className={cardTitle}>{t.notification}</h2>
                 <Notification t={t} />
               </CardContent>
             </Card>
